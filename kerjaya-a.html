@@ -32,15 +32,14 @@
         .header-section {
             text-align: center;
             margin-bottom: 50px;
-            animation: fadeInDown 0.8s ease-out;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            color: #f093fb; /* Warna tema artistik (pink/purple) */
+            color: #f093fb;
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(240, 147, 251, 0.5);
+            text-shadow: 0 0 15px rgba(240, 147, 251, 0.4);
         }
 
         .subtitle {
@@ -49,10 +48,9 @@
             text-transform: uppercase;
         }
 
-        /* Grid Kerjaya */
         .career-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -63,15 +61,21 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.3s;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .career-card:hover {
             transform: translateY(-10px);
-            background: rgba(240, 147, 251, 0.1);
+            background: rgba(240, 147, 251, 0.15);
             border-color: #f093fb;
-            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.2);
+            box-shadow: 0 0 20px rgba(240, 147, 251, 0.4);
         }
 
         .career-card i {
@@ -83,13 +87,24 @@
         .career-card h3 {
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #f093fb;
         }
 
         .career-card p {
             font-size: 0.9rem;
             color: #bbb;
             line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #f093fb;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .back-btn {
@@ -109,11 +124,6 @@
             background: #f093fb;
             color: #000;
         }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
@@ -124,45 +134,53 @@
         <div class="header-section">
             <p class="subtitle">Eksplorasi Kerjaya</p>
             <h1>UNIT ARTISTIK (A)</h1>
-            <p>Bidang yang mengutamakan kreativiti, ekspresi diri, dan inovasi visual atau auditori.</p>
+            <p>Pilih kerjaya di bawah untuk melihat syarat UPU & Universiti.</p>
         </div>
 
         <div class="career-grid">
-            <div class="career-card">
+            
+            <div class="career-card" onclick="window.location.href='detail-grafik.html'">
                 <i class="fas fa-bezier-curve"></i>
                 <h3>Pereka Grafik Digital</h3>
-                <p>Mencipta identiti visual dan grafik yang menarik untuk jenama besar serta media sosial masa kini.</p>
+                <p>Mencipta identiti visual dan grafik menarik untuk jenama besar serta media sosial masa kini.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-filem.html'">
                 <i class="fas fa-camera-retro"></i>
                 <h3>Pengarah Seni / Filem</h3>
-                <p>Mengetuai visi kreatif bagi sesebuah filem atau produksi media untuk menyampaikan cerita yang bermakna.</p>
+                <p>Mengetuai visi kreatif bagi sesebuah filem atau produksi media untuk menyampaikan cerita bermakna.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-penulis.html'">
                 <i class="fas fa-pen-nib"></i>
                 <h3>Penulis Kandungan Kreatif</h3>
-                <p>Menghasilkan skrip, novel, atau kandungan kreatif yang mampu mempengaruhi emosi dan minda pembaca.</p>
+                <p>Menghasilkan skrip, novel, atau kandungan kreatif yang mampu mempengaruhi emosi pembaca.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-uxui.html'">
                 <i class="fas fa-vr-cardboard"></i>
                 <h3>Pereka UX/UI</h3>
-                <p>Merangka pengalaman pengguna (UX) dan antaramuka (UI) yang cantik dan futuristik untuk aplikasi telefon pintar.</p>
+                <p>Merangka pengalaman pengguna (UX) dan antaramuka (UI) yang cantik untuk aplikasi telefon pintar.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-muzik.html'">
                 <i class="fas fa-music"></i>
                 <h3>Komposer / Penerbit Muzik</h3>
-                <p>Mencipta melodi dan menyusun audio untuk lagu, iklan, atau runut bunyi permainan video global.</p>
+                <p>Mencipta melodi dan menyusun audio untuk lagu, iklan, atau runut bunyi permainan video.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-arkitek.html'">
                 <i class="fas fa-drafting-compass"></i>
                 <h3>Arkitek / Pereka Dalaman</h3>
-                <p>Merancang ruang kediaman dan bangunan yang mempunyai nilai estetika tinggi serta fungsi yang moden.</p>
+                <p>Merancang ruang kediaman dan bangunan yang mempunyai nilai estetika tinggi serta fungsi moden.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
+
         </div>
 
         <div style="text-align: center;">
