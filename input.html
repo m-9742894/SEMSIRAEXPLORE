@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Nama - SEMSIRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0b1e;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            z-index: -1;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        h2 { font-family: 'Orbitron', sans-serif; color: #00d2ff; margin-bottom: 20px; }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00d2ff;
+        }
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #3a7bd5;
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { border-color: #00d2ff; box-shadow: 0 0 10px #00d2ff; }
+
+        .next-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .next-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 210, 255, 0.5); }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="card">
+        <i class="fas fa-user-circle" style="font-size: 3.5rem; color: #00d2ff; margin-bottom: 15px;"></i>
+        <h2>PROFIL PELAJAR</h2>
+        <p style="font-size: 0.9rem; margin-bottom: 20px; color: #ccc;">Sila masukkan nama penuh anda untuk meneruskan pengembaraan.</p>
+        
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="studentName" placeholder="Nama Penuh Anda" required>
+        </div>
+
+        <button class="next-btn" onclick="saveAndGo()">TERUSKAN <i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <script>
+        function saveAndGo() {
+            var name = document.getElementById("studentName").value;
+            if(name.trim() !== "") {
+                localStorage.setItem("namaPelajar", name);
+                window.location.href = "pilihan.html"; // Nanti buat fail pilihan.html pula
+            } else {
+                alert("Tolong isi nama dulu!");
+            }
+        }
+    </script>
+</body>
+</html>
