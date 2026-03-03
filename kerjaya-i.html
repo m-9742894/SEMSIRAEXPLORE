@@ -32,7 +32,6 @@
         .header-section {
             text-align: center;
             margin-bottom: 50px;
-            animation: fadeInDown 0.8s ease-out;
         }
 
         h1 {
@@ -48,10 +47,9 @@
             text-transform: uppercase;
         }
 
-        /* Grid Kerjaya */
         .career-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -62,15 +60,21 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.3s;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .career-card:hover {
             transform: translateY(-10px);
-            background: rgba(0, 210, 255, 0.1);
+            background: rgba(0, 210, 255, 0.15);
             border-color: #00d2ff;
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
         }
 
         .career-card i {
@@ -82,13 +86,24 @@
         .career-card h3 {
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #00d2ff;
         }
 
         .career-card p {
             font-size: 0.9rem;
             color: #bbb;
             line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #00d2ff;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .back-btn {
@@ -108,11 +123,6 @@
             background: #00d2ff;
             color: #000;
         }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
@@ -123,45 +133,53 @@
         <div class="header-section">
             <p class="subtitle">Eksplorasi Kerjaya</p>
             <h1>UNIT INVESTIGATIF (I)</h1>
-            <p>Bidang yang mencabar minda melalui penyelidikan, analisis, dan penyelesaian masalah saintifik.</p>
+            <p>Pilih kerjaya di bawah untuk melihat syarat UPU & Universiti.</p>
         </div>
 
         <div class="career-grid">
-            <div class="career-card">
+            
+            <div class="career-card" onclick="window.location.href='detail-saintis.html'">
                 <i class="fas fa-microscope"></i>
                 <h3>Saintis Penyelidik</h3>
                 <p>Menjalankan eksperimen di makmal untuk mencari penemuan baru dalam bidang perubatan atau teknologi.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-doktor.html'">
                 <i class="fas fa-user-md"></i>
                 <h3>Doktor Pakar / Pakar Bedah</h3>
                 <p>Mendiagnosis penyakit yang kompleks dan mencari kaedah rawatan yang paling berkesan untuk pesakit.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-data.html'">
                 <i class="fas fa-database"></i>
                 <h3>Pakar Analisis Data</h3>
                 <p>Mengkaji ribuan data digital untuk meramal trend masa hadapan dan membantu membuat keputusan besar.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-forensik.html'">
                 <i class="fas fa-fingerprint"></i>
                 <h3>Pakar Forensik</h3>
                 <p>Menggunakan sains untuk menganalisis bahan bukti di tempat kejadian bagi membantu menyelesaikan kes jenayah.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-siber.html'">
                 <i class="fas fa-user-secret"></i>
                 <h3>Pakar Keselamatan Siber</h3>
                 <p>Menyiasat pencerobohan sistem komputer dan membina sistem pertahanan digital yang tidak boleh ditembus.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-farmasi.html'">
                 <i class="fas fa-vial"></i>
                 <h3>Ahli Farmasi</h3>
                 <p>Mengkaji komposisi ubat-ubatan dan memastikan penggunaan bahan kimia adalah selamat untuk kesihatan manusia.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
+
         </div>
 
         <div style="text-align: center;">
