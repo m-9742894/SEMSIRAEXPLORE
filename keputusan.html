@@ -18,6 +18,7 @@
             flex-direction: column;
             align-items: center;
             padding: 40px 20px;
+            line-height: 1.6;
         }
 
         .background {
@@ -33,29 +34,29 @@
             color: #00d2ff;
             text-align: center;
             text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            letter-spacing: 2px;
         }
 
         .main-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 950px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             border-radius: 20px;
             border: 1px solid rgba(0, 210, 255, 0.3);
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
         }
 
-        /* Layout Bar RIASEK */
         .riasek-row {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             gap: 15px;
         }
 
         .unit-label {
-            width: 150px;
+            width: 180px;
             font-family: 'Orbitron', sans-serif;
             font-weight: bold;
             color: #00d2ff;
@@ -65,8 +66,8 @@
         .bar-container {
             flex-grow: 1;
             background: rgba(255, 255, 255, 0.1);
-            height: 30px;
-            border-radius: 15px;
+            height: 35px;
+            border-radius: 20px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -81,17 +82,18 @@
             align-items: center;
             justify-content: flex-end;
             padding-right: 15px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .view-btn {
             background: rgba(0, 210, 255, 0.1);
             border: 1px solid #00d2ff;
             color: #00d2ff;
-            padding: 6px 15px;
-            border-radius: 5px;
+            padding: 8px 20px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.75rem;
             font-family: 'Orbitron', sans-serif;
@@ -101,69 +103,75 @@
         .view-btn:hover {
             background: #00d2ff;
             color: #000;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
         }
 
-        /* Kotak Analisis Detail */
         .top-result-box {
             margin-top: 40px;
-            background: rgba(0, 210, 255, 0.05);
+            background: rgba(0, 210, 255, 0.08);
             border: 1px solid #00d2ff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.1);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 30px rgba(0, 210, 255, 0.1);
         }
 
         .top-result-box h2 {
             font-family: 'Orbitron', sans-serif;
             color: #00d2ff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 210, 255, 0.3);
+            padding-bottom: 15px;
+            font-size: 1.4rem;
         }
 
         .description-content {
-            color: #e0e0e0;
+            color: #f0f0f0;
             line-height: 1.8;
-            font-size: 1rem;
-            text-align: justify;
+            font-size: 1.05rem;
         }
 
         .description-content strong {
             color: #00d2ff;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .footer-action {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
         }
 
         .career-btn {
             background: linear-gradient(45deg, #00d2ff, #3a7bd5);
             border: none;
-            padding: 15px 40px;
+            padding: 18px 50px;
             color: white;
             border-radius: 50px;
             font-family: 'Orbitron', sans-serif;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
-            transition: 0.3s;
+            box-shadow: 0 5px 25px rgba(0, 210, 255, 0.4);
+            transition: 0.4s;
             text-decoration: none;
             display: inline-block;
+            font-size: 1rem;
         }
 
         .career-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(0, 210, 255, 0.6);
         }
 
-        @media (max-width: 600px) {
-            .riasek-row { flex-direction: column; align-items: flex-start; gap: 5px; }
+        @media (max-width: 768px) {
+            .riasek-row { flex-direction: column; align-items: flex-start; gap: 8px; }
             .unit-label { width: 100%; }
             .bar-container { width: 100%; }
+            .view-btn { width: 100%; }
         }
     </style>
 </head>
@@ -201,8 +209,8 @@
         </div>
         <div class="riasek-row">
             <div class="unit-label">KONVENSIONAL (K)</div>
-            <div class="bar-container"><div class="bar-fill" id="bar-C">0%</div></div>
-            <button class="view-btn" onclick="window.location.href='kerjaya-k.html'">LIHAT</button>
+            <div class="bar-container"><div class="bar-fill" id="bar-K">0%</div></div>
+            <button class="view-btn" onclick="window.location.href='kerjaya-c.html'">LIHAT</button>
         </div>
 
         <div class="top-result-box" id="resultBox">
@@ -217,39 +225,44 @@
     </div>
 
     <script>
-        // Simpan unit tertinggi global untuk kegunaan butang bawah
         let highestUnitGlobal = 'R';
 
         const riasekDetails = {
             R: {
                 title: "REALISTIK (THE DOERS)",
-                desc: "Anda adalah individu yang praktikal, mahir secara teknikal, dan lebih suka bekerja dengan objek nyata seperti mesin, alatan, atau alam semulajadi.",
-                story: "Dunia anda adalah dunia tindakan. Anda tidak suka teori yang meleret-leret tanpa aplikasi. Anda adalah individu yang membina tamadun melalui kemahiran teknikal, kejuruteraan, dan kepakaran praktikal. Masa depan anda cerah dalam bidang yang memerlukan ketepatan tangan dan kepintaran mekanikal."
+                desc: "Anda adalah individu yang praktikal, bersahaja, dan mahir secara teknikal. Anda lebih gemar bekerja dengan objek yang nyata, alatan, mesin, atau melakukan aktiviti fizikal di luar bangunan berbanding hanya duduk di pejabat atau berteori tanpa tindakan.",
+                story: "Dunia anda adalah dunia tindakan. Anda tidak suka membuang masa dengan konsep abstrak yang tidak memberi hasil konkrit. Sebagai seorang 'Doer', anda adalah individu yang membina tamadun melalui kepakaran kejuruteraan, mekanikal, dan kemahiran teknikal. Masa depan anda cerah dalam bidang yang memerlukan ketepatan tangan dan kepintaran dalam menyelesaikan masalah fizikal.",
+                file: "r"
             },
             I: {
                 title: "INVESTIGATIF (THE THINKERS)",
-                desc: "Anda mempunyai minda yang tajam dan sentiasa ingin tahu. Anda gemar mengkaji, menganalisis maklumat, dan menyelesaikan masalah intelektual.",
-                story: "Dunia bagi anda adalah satu teka-teki besar yang perlu diselesaikan. Anda melihat data di mana orang lain melihat kekacauan. Sebagai seorang pemikir, anda akan sentiasa mencari 'kebenaran' melalui sains dan logik. Masa depan anda terletak pada inovasi dan penemuan baru."
+                desc: "Anda mempunyai minda yang sangat tajam, penuh rasa ingin tahu, dan analitikal. Anda gemar mengkaji, menyelidik maklumat yang kompleks, serta menyelesaikan masalah intelektual yang memerlukan logik tinggi.",
+                story: "Dunia bagi anda adalah satu teka-teki besar yang menunggu untuk dirungkai. Anda melihat pola dan data di mana orang lain hanya melihat kekacauan. Sebagai seorang pemikir, anda akan sentiasa mencari 'kebenaran' melalui sains dan penyelidikan. Masa depan anda terletak pada inovasi, makmal penyelidikan, atau persekitaran yang menghargai penemuan baru yang mengubah dunia.",
+                file: "i"
             },
             A: {
                 title: "ARTISTIK (THE CREATORS)",
-                desc: "Anda seorang yang sangat kreatif, ekspresif, dan mempunyai nilai estetika yang tinggi. Anda lebih selesa dengan kebebasan idea.",
-                story: "Anda membawa warna kepada dunia yang pudar. Melalui seni, tulisan, muzik, atau rekaan, anda berkomunikasi dengan cara yang unik. Anda adalah pencetus emosi dan arkitek kepada keindahan. Laluan anda adalah laluan inspirasi yang mencabar norma biasa."
+                desc: "Anda seorang yang sangat kreatif, ekspresif, dan mempunyai nilai estetika yang tinggi. Anda lebih selesa dengan kebebasan idea dan persekitaran yang tidak mempunyai struktur yang terlalu ketat atau membosankan.",
+                story: "Anda membawa warna kepada dunia yang sering kelihatan pudar. Melalui seni, tulisan, reka bentuk, muzik, atau persembahan, anda berkomunikasi dengan cara yang tidak mampu dilakukan oleh kata-kata biasa. Anda adalah arkitek kepada emosi dan keindahan. Laluan anda adalah laluan inspirasi yang sentiasa mencabar norma biasa dan mencipta sesuatu yang belum pernah wujud.",
+                file: "a"
             },
             S: {
                 title: "SOSIAL (THE HELPERS)",
-                desc: "Anda adalah individu yang berempati tinggi, suka menolong, dan mahir dalam mendidik atau membimbing orang lain.",
-                story: "Hati anda adalah kekuatan anda. Dalam masyarakat yang mencabar, anda berdiri sebagai tonggak sokongan. Sama ada dalam bidang pendidikan atau kesihatan, kebolehan anda untuk mendengar menjadikan anda sangat diperlukan untuk keharmonian sejagat."
+                desc: "Anda adalah individu yang mempunyai empati tinggi, suka menolong, dan sangat mahir dalam mendidik, membimbing, atau merawat orang lain. Kebolehan interpersonal anda membolehkan anda bekerja dengan harmoni dalam kumpulan.",
+                story: "Hati anda adalah kekuatan terbesar anda. Dalam masyarakat yang mencabar, anda berdiri sebagai tonggak sokongan dan cahaya harapan bagi orang lain. Sama ada dalam bidang pendidikan, kesihatan, atau kebajikan, kebolehan anda untuk mendengar dan memahami menjadikan anda sangat diperlukan. Anda membina dunia yang lebih penyayang dan sejahtera melalui interaksi manusia yang tulus.",
+                file: "s"
             },
             E: {
                 title: "ENTERPRISING (THE PERSUADERS)",
-                desc: "Anda dilahirkan sebagai pemimpin. Anda mempunyai keyakinan diri yang kuat, pandai meyakinkan orang lain, dan mengejar pengaruh.",
-                story: "Anda adalah penggerak perubahan dan peluang. Anda melihat potensi perniagaan di mana-mana sahaja. Keberanian anda mengambil risiko dan karisma anda dalam menguruskan manusia akan membawa anda ke puncak kerjaya yang dinamik."
+                desc: "Anda dilahirkan sebagai pemimpin dan pendorong. Anda mempunyai keyakinan diri yang kuat, berkarisma, dan sangat mahir dalam meyakinkan atau mempengaruhi orang lain demi mencapai matlamat organisasi atau peribadi.",
+                story: "Anda adalah penggerak perubahan dan pencipta peluang. Anda melihat potensi perniagaan dan strategi di mana orang lain melihat risiko yang menakutkan. Keberanian anda mengambil risiko, kebolehan membuat keputusan pantas, dan kepintaran dalam menguruskan manusia akan membawa anda ke puncak kerjaya yang dinamik dalam dunia korporat, perniagaan, atau politik.",
+                file: "e"
             },
             K: {
                 title: "KONVENSIONAL (THE ORGANIZERS)",
-                desc: "Anda sangat teliti, sistematik, dan menghargai keteraturan. Anda cemerlang dalam menguruskan data dan prosedur.",
-                story: "Anda adalah tulang belakang organisasi yang berjaya. Kecekapan anda memastikan sistem berjalan lancar tanpa cacat cela. Dalam dunia penuh data, kemampuan anda menyusun maklumat secara tepat menjadikan anda wira dalam kestabilan ekonomi."
+                desc: "Anda sangat teliti, sistematik, dan menghargai keteraturan serta peraturan. Anda cemerlang dalam menguruskan data, dokumen, kewangan, dan memastikan setiap prosedur dijalankan dengan tepat tanpa sebarang kesilapan.",
+                story: "Anda adalah tulang belakang yang memastikan sesebuah organisasi berjaya dan stabil. Kecekapan anda memastikan sistem berjalan lancar seperti jam yang tepat. Dalam dunia yang penuh dengan limpahan maklumat, kemampuan anda untuk menyusun, menganalisis, dan menyimpan data secara berstruktur menjadikan anda wira yang tidak didendang dalam mengekalkan integriti dan kelestarian ekonomi.",
+                file: "c"
             }
         };
 
@@ -259,11 +272,9 @@
         document.getElementById("headerName").innerText = "KEPUTUSAN: " + userName.toUpperCase();
 
         let highestScore = -1;
-        const totalPossible = 1; 
 
         for (let unit in scores) {
-            let percentage = (scores[unit] / totalPossible) * 100;
-            if (percentage > 100) percentage = 100;
+            let percentage = Math.min(Math.round(scores[unit] * 100), 100); 
             
             setTimeout(() => {
                 const element = document.getElementById("bar-" + unit);
@@ -282,15 +293,15 @@
         const result = riasekDetails[highestUnitGlobal];
         document.getElementById("topUnitTitle").innerText = "UNIT DOMINAN ANDA: " + result.title;
         document.getElementById("topUnitDesc").innerHTML = `
-            <strong>SIAPA ANDA?</strong><br>
-            ${result.desc}<br><br>
-            <strong>CERITA HALA TUJU ANDA:</strong><br>
-            ${result.story}
+            <strong>SIAPA ANDA?</strong>
+            <p style="margin-bottom:15px;">${result.desc}</p>
+            <strong>CERITA HALA TUJU ANDA:</strong>
+            <p>${result.story}</p>
         `;
 
-        // Fungsi untuk pergi ke page kerjaya secara automatik berdasarkan unit tertinggi
         function goCareerAuto() {
-            window.location.href = "kerjaya-" + highestUnitGlobal.toLowerCase() + ".html";
+            const fileName = riasekDetails[highestUnitGlobal].file;
+            window.location.href = "kerjaya-" + fileName + ".html";
         }
     </script>
 </body>
