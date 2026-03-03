@@ -32,12 +32,11 @@
         .header-section {
             text-align: center;
             margin-bottom: 50px;
-            animation: fadeInDown 0.8s ease-out;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            color: #a0c4ff; /* Warna tema konvensional (Light Blue/Silver) */
+            color: #a0c4ff;
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 0 0 15px rgba(160, 196, 255, 0.4);
@@ -51,7 +50,7 @@
 
         .career-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -62,15 +61,21 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.3s;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .career-card:hover {
             transform: translateY(-10px);
-            background: rgba(160, 196, 255, 0.1);
+            background: rgba(160, 196, 255, 0.15);
             border-color: #a0c4ff;
-            box-shadow: 0 10px 30px rgba(160, 196, 255, 0.2);
+            box-shadow: 0 0 20px rgba(160, 196, 255, 0.4);
         }
 
         .career-card i {
@@ -82,13 +87,24 @@
         .career-card h3 {
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #a0c4ff;
         }
 
         .career-card p {
             font-size: 0.9rem;
             color: #bbb;
             line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #a0c4ff;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .back-btn {
@@ -108,11 +124,6 @@
             background: #a0c4ff;
             color: #000;
         }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
@@ -123,45 +134,53 @@
         <div class="header-section">
             <p class="subtitle">Eksplorasi Kerjaya</p>
             <h1>UNIT KONVENSIONAL (K)</h1>
-            <p>Bidang yang mementingkan ketepatan, pengurusan data, dan sistem pentadbiran yang teratur.</p>
+            <p>Pilih kerjaya di bawah untuk melihat syarat UPU & Universiti.</p>
         </div>
 
         <div class="career-grid">
-            <div class="career-card">
+            
+            <div class="career-card" onclick="window.location.href='detail-akaun.html'">
                 <i class="fas fa-calculator"></i>
                 <h3>Akauntan / Juruaudit</h3>
-                <p>Menguruskan rekod kewangan dan memastikan setiap transaksi mematuhi piawaian undang-undang yang tepat.</p>
+                <p>Menguruskan rekod kewangan dan memastikan setiap transaksi mematuhi piawaian undang-undang.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-bank.html'">
                 <i class="fas fa-university"></i>
                 <h3>Pegawai Bank / Kewangan</h3>
                 <p>Menjalankan urusan perbankan dan pelaburan pelanggan dengan penuh ketelitian serta integriti.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-pentadbir.html'">
                 <i class="fas fa-file-invoice"></i>
                 <h3>Pentadbir Pejabat</h3>
-                <p>Menyelaras sistem fail, data organisasi, dan memastikan operasi harian berjalan lancar tanpa cacat cela.</p>
+                <p>Menyelaras sistem fail, data organisasi, dan memastikan operasi harian berjalan lancar.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-pustakawan.html'">
                 <i class="fas fa-database"></i>
                 <h3>Pustakawan Digital</h3>
                 <p>Menguruskan pangkalan data maklumat dan arkib digital agar mudah diakses secara sistematik.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-kualiti.html'">
                 <i class="fas fa-tasks"></i>
                 <h3>Pakar Kawalan Kualiti</h3>
                 <p>Memeriksa produk atau sistem untuk memastikan ia menepati standard spesifikasi yang ditetapkan.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-kastam.html'">
                 <i class="fas fa-user-shield"></i>
                 <h3>Pegawai Imigresen / Kastam</h3>
-                <p>Menguatkuasakan peraturan dan prosedur keselamatan negara dengan pematuhan undang-undang yang ketat.</p>
+                <p>Menguatkuasakan peraturan dan prosedur keselamatan negara dengan pematuhan yang ketat.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
+
         </div>
 
         <div style="text-align: center;">
