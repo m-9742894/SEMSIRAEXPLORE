@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian RIASEK - SEMSIRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0b1e;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1b2735 0%, #08090a 100%);
+            z-index: -1;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: absolute;
+            top: 20px;
+            width: 80%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            height: 10px;
+            border-radius: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #00d2ff, #3a7bd5);
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+            transition: 0.5s;
+        }
+
+        .welcome-msg {
+            font-size: 0.9rem;
+            color: #00d2ff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            font-size: 1.4rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .opt-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 15px;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .opt-btn:hover {
+            background: rgba(0, 210, 255, 0.2);
+            border-color: #00d2ff;
+            transform: scale(1.02);
+        }
+
+        .opt-btn i { font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="question-card" id="quizBox">
+        <div class="welcome-msg" id="displayUser">EKSPLORASI BERMULA...</div>
+        <h2 id="questionText">Memuatkan soalan...</h2>
+        
+        <div class="options">
+            <button class="opt-btn" onclick="nextQuestion('setuju')">
+                <i class="fas fa-check-circle"></i> SAYA MINAT / SETUJU
+            </button>
+            <button class="opt-btn" onclick="nextQuestion('tidak')">
+                <i class="fas fa-times-circle"></i> SAYA TIDAK MINAT
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Data Soalan RIASEK
+        const questions = [
+            { q: "Saya suka membaiki barang elektrik atau mekanikal.", cat: "R" },
+            { q: "Saya gemar membuat kaji selidik atau eksperimen sains.", cat: "I" },
+            { q: "Saya suka melukis, menulis puisi atau bermain alat muzik.", cat: "A" },
+            { q: "Saya suka menolong orang lain menyelesaikan masalah mereka.", cat: "S" },
+            { q: "Saya suka memimpin kumpulan dan meyakinkan orang lain.", cat: "E" },
+            { q: "Saya suka menyusun fail, data dan bekerja dengan teratur.", cat: "K" }
+        ];
+
+        let currentQ = 0;
+        let scores = { R: 0, I: 0, A: 0, S: 0, E: 0, K: 0 };
+
+        // Ambil nama dari fail sebelum ni
+        const userName = localStorage.getItem("namaPelajar") || "Pelajar";
+        document.getElementById("displayUser").innerText = "EKSPLORASI: " + userName;
+
+        function loadQuestion() {
+            if (currentQ < questions.length) {
+                document.getElementById("questionText").innerText = questions[currentQ].q;
+                let progress = ((currentQ) / questions.length) * 100;
+                document.getElementById("progressBar").style.width = progress + "%";
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function nextQuestion(choice) {
+            if (choice === 'setuju') {
+                const category = questions[currentQ].cat;
+                scores[category]++;
+            }
+            
+            currentQ++;
+            
+            // Efek transisi kad
+            const box = document.getElementById("quizBox");
+            box.style.opacity = "0";
+            box.style.transform = "translateX(-20px)";
+
+            setTimeout(() => {
+                loadQuestion();
+                box.style.opacity = "1";
+                box.style.transform = "translateX(0)";
+            }, 300);
+        }
+
+        function finishQuiz() {
+            // Simpan skor ke localStorage
+            localStorage.setItem("riasekScores", JSON.stringify(scores));
+            document.getElementById("progressBar").style.width = "100%";
+            document.getElementById("quizBox").innerHTML = `
+                <i class="fas fa-microchip" style="font-size:3rem; color:#00d2ff; margin-bottom:20px;"></i>
+                <h2>Analisis Selesai!</h2>
+                <p>Sistem digital kami sedang memproses hala tuju kerjaya anda, ${userName}.</p>
+                <br>
+                <button class="opt-btn" onclick="window.location.href='keputusan.html'" style="background:#00d2ff; color:#000; font-weight:bold;">LIHAT KEPUTUSAN</button>
+            `;
+        }
+
+        // Mula soalan pertama
+        loadQuestion();
+    </script>
+
+</body>
+</html>
