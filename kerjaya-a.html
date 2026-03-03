@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerjaya Artistik - SEMSIRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0b1e;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .background {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #2a1b35 0%, #08090a 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #f093fb; /* Warna tema artistik (pink/purple) */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(240, 147, 251, 0.5);
+        }
+
+        .subtitle {
+            color: #ccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Grid Kerjaya */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .career-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(240, 147, 251, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+            background: rgba(240, 147, 251, 0.1);
+            border-color: #f093fb;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.2);
+        }
+
+        .career-card i {
+            font-size: 3rem;
+            color: #f093fb;
+            margin-bottom: 20px;
+        }
+
+        .career-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .career-card p {
+            font-size: 0.9rem;
+            color: #bbb;
+            line-height: 1.5;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid #f093fb;
+            color: #f093fb;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #f093fb;
+            color: #000;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="container">
+        <div class="header-section">
+            <p class="subtitle">Eksplorasi Kerjaya</p>
+            <h1>UNIT ARTISTIK (A)</h1>
+            <p>Bidang yang mengutamakan kreativiti, ekspresi diri, dan inovasi visual atau auditori.</p>
+        </div>
+
+        <div class="career-grid">
+            <div class="career-card">
+                <i class="fas fa-bezier-curve"></i>
+                <h3>Pereka Grafik Digital</h3>
+                <p>Mencipta identiti visual dan grafik yang menarik untuk jenama besar serta media sosial masa kini.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-camera-retro"></i>
+                <h3>Pengarah Seni / Filem</h3>
+                <p>Mengetuai visi kreatif bagi sesebuah filem atau produksi media untuk menyampaikan cerita yang bermakna.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-pen-nib"></i>
+                <h3>Penulis Kandungan Kreatif</h3>
+                <p>Menghasilkan skrip, novel, atau kandungan kreatif yang mampu mempengaruhi emosi dan minda pembaca.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-vr-cardboard"></i>
+                <h3>Pereka UX/UI</h3>
+                <p>Merangka pengalaman pengguna (UX) dan antaramuka (UI) yang cantik dan futuristik untuk aplikasi telefon pintar.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-music"></i>
+                <h3>Komposer / Penerbit Muzik</h3>
+                <p>Mencipta melodi dan menyusun audio untuk lagu, iklan, atau runut bunyi permainan video global.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Arkitek / Pereka Dalaman</h3>
+                <p>Merancang ruang kediaman dan bangunan yang mempunyai nilai estetika tinggi serta fungsi yang moden.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="keputusan.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE KEPUTUSAN</a>
+        </div>
+    </div>
+
+</body>
+</html>
