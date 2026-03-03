@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info Pendidikan: Jurutera Awam - SEMSIRA</title>
+    <title>Info Pendidikan: Pakar Robotik - SEMSIRA</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -85,11 +85,11 @@
 <body>
     <div class="background"></div>
     <div class="container">
-        <a href="diari-awam.html" class="diary-btn">
+        <button onclick="hantarDataRobotik()" class="diary-btn">
             <i class="fas fa-book"></i> CETAK DIARI
-        </a>
+        </button>
 
-        <h1>INFO UPU: JURUTERA AWAM</h1>
+        <h1>INFO UPU: PAKAR ROBOTIK & MEKATRONIK</h1>
 
         <div class="info-grid">
             <div class="requirement-box">
@@ -100,11 +100,11 @@
             </div>
 
             <div class="requirement-box" style="border-left-color: #f093fb;">
-                <h3 class="section-title" style="color: #f093fb;"><i class="fas fa-hard-hat"></i> SYARAT KHAS (SPM)</h3>
-                <p>• <strong>Matematik Tambahan:</strong> Minimum Gred B.<br>
-                   • <strong>Fizik:</strong> Minimum Gred B.<br>
-                   • <strong>Matematik:</strong> Minimum Gred A.<br>
-                   • <strong>Kimia/Lukisan Kejuruteraan:</strong> Lulus.</p>
+                <h3 class="section-title" style="color: #f093fb;"><i class="fas fa-robot"></i> SYARAT KHAS (SPM)</h3>
+                <p>• <strong>Matematik Tambahan:</strong> Minimum Gred C.<br>
+                   • <strong>Fizik:</strong> Minimum Gred C.<br>
+                   • <strong>Matematik:</strong> Minimum Gred B.<br>
+                   • <strong>English:</strong> Lulus.</p>
             </div>
         </div>
 
@@ -120,28 +120,28 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="uni-name">UiTM Pasir Gudang</span><br><small>Johor</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
+                        <td><span class="uni-name">UTeM Melaka</span><br><small>Melaka</small></td>
+                        <td>Diploma Kejuruteraan Mekatronik<br><span class="badge">DIPLOMA</span></td>
+                        <td>3 Tahun</td>
+                        <td>RM 600.00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">UiTM Bukit Besi</span><br><small>Terengganu</small></td>
+                        <td>Diploma Kejuruteraan Mekanikal (Robotik)<br><span class="badge">DIPLOMA</span></td>
                         <td>3 Tahun</td>
                         <td>RM 520.00</td>
                     </tr>
                     <tr>
-                        <td><span class="uni-name">UTM Skudai</span><br><small>Johor</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
+                        <td><span class="uni-name">UMPSA Pekan</span><br><small>Pahang</small></td>
+                        <td>Diploma Kejuruteraan Mekatronik (Dual Degree)<br><span class="badge">DIPLOMA</span></td>
                         <td>3 Tahun</td>
-                        <td>RM 850.00</td>
+                        <td>RM 900.00</td>
                     </tr>
                     <tr>
-                        <td><span class="uni-name">Politeknik Ungku Omar</span><br><small>Perak</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
+                        <td><span class="uni-name">Politeknik Sultan Azlan Shah</span><br><small>Perak</small></td>
+                        <td>Diploma Kejuruteraan Mekatronik<br><span class="badge">DIPLOMA</span></td>
                         <td>3 Tahun</td>
                         <td>RM 200.00</td>
-                    </tr>
-                    <tr>
-                        <td><span class="uni-name">UTHM Batu Pahat</span><br><small>Johor</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
-                        <td>3 Tahun</td>
-                        <td>RM 750.00</td>
                     </tr>
                 </tbody>
             </table>
@@ -151,5 +151,22 @@
             <a href="kerjaya-r.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE UNIT R</a>
         </div>
     </div>
+
+    <script>
+        function hantarDataRobotik() {
+            const dataRobotik = {
+                nama: "PAKAR ROBOTIK & MEKATRONIK",
+                am: "Warganegara Malaysia, Lulus SPM 5 Kepujian (BM & Sejarah).",
+                khas: "Mate Tambahan (C), Fizik (C), Matematik (B).",
+                universiti: "1. UTeM: Dip. Mekatronik<br>2. UiTM: Dip. Mekanikal (Robotik)<br>3. UMPSA: Dip. Mekatronik (Dual Degree)<br>4. Politeknik: Dip. Mekatronik"
+            };
+
+            // Simpan data ke memori browser
+            localStorage.setItem("pilihanKerjaya", JSON.stringify(dataRobotik));
+
+            // Buka fail diari.html
+            window.location.href = "diari.html";
+        }
+    </script>
 </body>
 </html>
