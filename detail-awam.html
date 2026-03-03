@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info Pendidikan: Kejuruteraan Awam - SEMSIRA</title>
+    <title>Info Pendidikan: Robotik & Automasi - SEMSIRA</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -11,11 +11,35 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #0a0b1e; color: white; padding: 40px 20px; line-height: 1.6; }
         .background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #1b2735 0%, #08090a 100%); z-index: -1; }
-        .container { max-width: 1100px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; position: relative; }
         
-        h1 { font-family: 'Orbitron', sans-serif; color: #00d2ff; text-align: center; margin-bottom: 30px; text-transform: uppercase; }
+        /* BUTANG KE PAGE DIARI */
+        .diary-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #00d2ff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+        }
+        .diary-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 15px #00d2ff;
+            transform: translateY(-2px);
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; color: #00d2ff; text-align: center; margin-bottom: 40px; text-transform: uppercase; }
         
-        /* Grid Layout */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
 
         .requirement-box { 
@@ -40,7 +64,6 @@
         table { width: 100%; border-collapse: collapse; min-width: 900px; }
         th { background: rgba(0, 210, 255, 0.2); color: #00d2ff; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; }
         th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        td { font-size: 0.85rem; }
         
         .uni-name { color: #fff; font-weight: bold; font-size: 1rem; }
         .badge { background: #00d2ff; color: #000; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.7rem; margin-top: 5px; display: inline-block; }
@@ -50,26 +73,33 @@
             color: #00d2ff; text-decoration: none; border-radius: 5px; font-family: 'Orbitron', sans-serif; 
             transition: 0.3s; font-size: 0.8rem;
         }
-        .back-btn:hover { background: #00d2ff; color: #000; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+        .back-btn:hover { background: #00d2ff; color: #000; }
 
-        @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .info-grid { grid-template-columns: 1fr; }
+            .diary-btn { position: static; margin-bottom: 20px; width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="container">
-        <h1>INFO UPU: KEJURUTERAAN AWAM</h1>
+        <a href="diari.html" class="diary-btn">
+            <i class="fas fa-book"></i> CETAK DIARI
+        </a>
+
+        <h1>INFO UPU: PAKAR ROBOTIK & MEKATRONIK</h1>
 
         <div class="info-grid">
             <div class="requirement-box">
                 <h3 class="section-title"><i class="fas fa-id-card"></i> SYARAT AM (WAJIB)</h3>
                 <p>• Warganegara Malaysia.<br>
-                   • Lulus SPM dengan mendapat sekurang-kurangnya <strong>LIMA (5) Kepujian</strong> (Gred C ke atas).<br>
+                   • Lulus SPM dengan mendapat sekurang-kurangnya <strong>LIMA (5) Kepujian</strong>.<br>
                    • Lulus Mata Pelajaran <strong>Sejarah</strong> dan <strong>Bahasa Melayu</strong>.</p>
             </div>
 
             <div class="requirement-box" style="border-left-color: #f093fb;">
-                <h3 class="section-title" style="color: #f093fb;"><i class="fas fa-star"></i> SYARAT KHAS (SPM)</h3>
+                <h3 class="section-title" style="color: #f093fb;"><i class="fas fa-microchip"></i> SYARAT KHAS (SPM)</h3>
                 <p>• <strong>Matematik Tambahan:</strong> Minimum Gred C.<br>
                    • <strong>Fizik:</strong> Minimum Gred C.<br>
                    • <strong>Matematik:</strong> Minimum Gred B.<br>
@@ -89,34 +119,28 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td><span class="uni-name">UTeM Durian Tunggal</span><br><small>Melaka</small></td>
+                        <td>Diploma Kejuruteraan Mekatronik<br><span class="badge">DIPLOMA</span></td>
+                        <td>3 Tahun</td>
+                        <td>RM 800.00</td>
+                    </tr>
+                    <tr>
                         <td><span class="uni-name">UiTM Pasir Gudang</span><br><small>Johor</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
-                        <td>3 Tahun (6 Semester)</td>
-                        <td>RM 518.00</td>
+                        <td>Diploma Kejuruteraan Mekanikal (Robotik)<br><span class="badge">DIPLOMA</span></td>
+                        <td>3 Tahun</td>
+                        <td>RM 520.00</td>
                     </tr>
                     <tr>
-                        <td><span class="uni-name">UTM Skudai</span><br><small>Johor</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
-                        <td>2.5 - 3 Tahun</td>
-                        <td>RM 1,250.00</td>
-                    </tr>
-                    <tr>
-                        <td><span class="uni-name">UTHM Batu Pahat</span><br><small>Johor</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
-                        <td>3 Tahun (6 Semester)</td>
-                        <td>RM 700.00</td>
-                    </tr>
-                    <tr>
-                        <td><span class="uni-name">UMPSA Gambang</span><br><small>Pahang</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
-                        <td>3 Tahun (6 Semester)</td>
-                        <td>RM 850.00</td>
-                    </tr>
-                    <tr>
-                        <td><span class="uni-name">Politeknik Ungku Omar</span><br><small>Perak</small></td>
-                        <td>Diploma Kejuruteraan Awam<br><span class="badge">DIPLOMA</span></td>
-                        <td>3 Tahun (6 Semester)</td>
+                        <td><span class="uni-name">Politeknik Sultan Salahuddin Abdul Aziz Shah</span><br><small>Selangor</small></td>
+                        <td>Diploma Kejuruteraan Mekatronik<br><span class="badge">DIPLOMA</span></td>
+                        <td>3 Tahun</td>
                         <td>RM 200.00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">UMPSA Pekan</span><br><small>Pahang</small></td>
+                        <td>Diploma Kejuruteraan Mekatronik (Kolaborasi Jerman)<br><span class="badge">DIPLOMA</span></td>
+                        <td>3 Tahun</td>
+                        <td>RM 900.00</td>
                     </tr>
                 </tbody>
             </table>
