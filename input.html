@@ -75,6 +75,10 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .next-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 210, 255, 0.5); }
     </style>
@@ -96,14 +100,28 @@
 
     <script>
         function saveAndGo() {
+            // Ambil apa yang user taip
             var name = document.getElementById("studentName").value;
+            
+            // Cek kalau nama kosong
             if(name.trim() !== "") {
+                // Simpan dalam storage browser supaya page lain boleh guna nama ni
                 localStorage.setItem("namaPelajar", name);
-                window.location.href = "pilihan.html"; // Nanti buat fail pilihan.html pula
+                
+                // Lepas simpan, terus buka fail soalan.html
+                window.location.href = "soalan.html";
             } else {
-                alert("Tolong isi nama dulu!");
+                // Kalau tak isi, bagi amaran
+                alert("Tolong isi nama penuh anda terlebih dahulu!");
             }
         }
+
+        // Supaya user boleh tekan 'Enter' pada keyboard untuk submit
+        document.getElementById("studentName").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                saveAndGo();
+            }
+        });
     </script>
 </body>
 </html>
