@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keputusan Analisis - SEMSIRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0b1e;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .background {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1b2735 0%, #08090a 100%);
+            z-index: -1;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 30px;
+            color: #00d2ff;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Layout Bar RIASEK */
+        .riasek-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .unit-label {
+            width: 150px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            color: #00d2ff;
+            font-size: 0.85rem;
+        }
+
+        .bar-container {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.1);
+            height: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+            width: 0%; 
+            transition: width 2s cubic-bezier(0.1, 0.5, 0.5, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .view-btn {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid #00d2ff;
+            color: #00d2ff;
+            padding: 6px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: #00d2ff;
+            color: #000;
+        }
+
+        /* Kotak Analisis Detail */
+        .top-result-box {
+            margin-top: 40px;
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid #00d2ff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+
+        .top-result-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00d2ff;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .description-content {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .description-content strong {
+            color: #00d2ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .footer-action {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .career-btn {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            border: none;
+            padding: 15px 40px;
+            color: white;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .career-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            .riasek-row { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .unit-label { width: 100%; }
+            .bar-container { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <h1 id="headerName">KEPUTUSAN ANALISIS</h1>
+
+    <div class="main-container">
+        <div class="riasek-row">
+            <div class="unit-label">REALISTIK (R)</div>
+            <div class="bar-container"><div class="bar-fill" id="bar-R">0%</div></div>
+            <button class="view-btn" onclick="showQuickInfo('R')">LIHAT</button>
+        </div>
+        <div class="riasek-row">
+            <div class="unit-label">INVESTIGATIF (I)</div>
+            <div class="bar-container"><div class="bar-fill" id="bar-I">0%</div></div>
+            <button class="view-btn" onclick="showQuickInfo('I')">LIHAT</button>
+        </div>
+        <div class="riasek-row">
+            <div class="unit-label">ARTISTIK (A)</div>
+            <div class="bar-container"><div class="bar-fill" id="bar-A">0%</div></div>
+            <button class="view-btn" onclick="showQuickInfo('A')">LIHAT</button>
+        </div>
+        <div class="riasek-row">
+            <div class="unit-label">SOSIAL (S)</div>
+            <div class="bar-container"><div class="bar-fill" id="bar-S">0%</div></div>
+            <button class="view-btn" onclick="showQuickInfo('S')">LIHAT</button>
+        </div>
+        <div class="riasek-row">
+            <div class="unit-label">ENTERPRISING (E)</div>
+            <div class="bar-container"><div class="bar-fill" id="bar-E">0%</div></div>
+            <button class="view-btn" onclick="showQuickInfo('E')">LIHAT</button>
+        </div>
+        <div class="riasek-row">
+            <div class="unit-label">KONVENSIONAL (K)</div>
+            <div class="bar-container"><div class="bar-fill" id="bar-K">0%</div></div>
+            <button class="view-btn" onclick="showQuickInfo('K')">LIHAT</button>
+        </div>
+
+        <div class="top-result-box" id="resultBox">
+            <h2 id="topUnitTitle">MENGANALISIS...</h2>
+            <div class="description-content" id="topUnitDesc">
+                Sila tunggu sebentar sementara sistem memproses skor anda...
+            </div>
+            <div class="footer-action">
+                <a href="kerjaya.html" class="career-btn">TEROKAI KERJAYA ANDA</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Keputusan Detail
+        const riasekDetails = {
+            R: {
+                title: "REALISTIK (THE DOERS)",
+                desc: "Anda adalah individu yang praktikal, mahir secara teknikal, dan lebih suka bekerja dengan objek nyata seperti mesin, alatan, atau alam semulajadi. Anda tidak gemar perkara yang terlalu abstrak atau teori tanpa aplikasi.",
+                story: "Bayangkan anda berada di barisan hadapan pembangunan fizikal negara. Anda adalah individu yang membina, membaiki, dan memastikan dunia ini berfungsi secara mekanikal. Keupayaan anda untuk berdikari dan ketepatan tangan anda adalah aset yang sangat berharga dalam dunia yang semakin mementingkan kepakaran teknikal."
+            },
+            I: {
+                title: "INVESTIGATIF (THE THINKERS)",
+                desc: "Anda mempunyai minda yang tajam dan sentiasa ingin tahu. Anda sangat gemar mengkaji, menganalisis maklumat, dan menyelesaikan masalah yang memerlukan daya intelektual yang tinggi.",
+                story: "Dunia bagi anda adalah satu teka-teki besar yang perlu diselesaikan. Anda melihat data di mana orang lain melihat kekacauan. Sebagai seorang pemikir, anda akan sentiasa mencari 'kebenaran' melalui sains dan logik. Masa depan anda terletak pada inovasi dan penemuan baru yang mampu mengubah cara hidup manusia."
+            },
+            A: {
+                title: "ARTISTIK (THE CREATORS)",
+                desc: "Anda seorang yang sangat kreatif, ekspresif, dan mempunyai nilai estetika yang tinggi. Anda tidak suka terikat dengan rutin yang membosankan dan lebih selesa dengan kebebasan idea.",
+                story: "Anda membawa warna kepada dunia yang pudar. Melalui seni, tulisan, muzik, atau rekaan, anda berkomunikasi dengan cara yang tidak dapat dilakukan oleh orang lain. Anda adalah pencetus emosi dan arkitek kepada keindahan. Laluan anda adalah laluan inspirasi yang mencabar norma biasa."
+            },
+            S: {
+                title: "SOSIAL (THE HELPERS)",
+                desc: "Anda adalah individu yang berempati tinggi, suka menolong, dan mahir dalam mendidik atau membimbing orang lain. Kepuasan anda adalah apabila melihat orang lain berjaya hasil bantuan anda.",
+                story: "Hati anda adalah kekuatan anda. Dalam masyarakat yang sering mementingkan diri, anda berdiri sebagai tonggak sokongan. Sama ada dalam bidang pendidikan, kesihatan, atau kebajikan, kebolehan anda untuk mendengar dan memahami menjadikan anda individu yang sangat diperlukan untuk keharmonian sejagat."
+            },
+            E: {
+                title: "ENTERPRISING (THE PERSUADERS)",
+                desc: "Anda dilahirkan sebagai pemimpin. Anda mempunyai keyakinan diri yang kuat, pandai meyakinkan orang lain, dan sentiasa mengejar kejayaan serta pengaruh dalam apa jua bidang yang diceburi.",
+                story: "Anda adalah penggerak perubahan dan peluang. Anda melihat potensi perniagaan dan kepimpinan di mana-mana sahaja. Keberanian anda mengambil risiko dan karisma anda dalam menguruskan manusia akan membawa anda ke puncak kerjaya yang penuh kuasa dan dinamik."
+            },
+            K: {
+                title: "KONVENSIONAL (THE ORGANIZERS)",
+                desc: "Anda sangat teliti, sistematik, dan menghargai keteraturan. Anda cemerlang dalam menguruskan data, rekod, dan memastikan segala tugasan mengikut prosedur yang betul tanpa sebarang kesilapan.",
+                story: "Anda adalah tulang belakang kepada setiap organisasi yang berjaya. Kecekapan anda memastikan sistem berjalan lancar tanpa cacat cela. Dalam dunia yang penuh maklumat, kemampuan anda untuk menyusun, menyaring, dan menguruskan data secara tepat menjadikan anda wira yang tidak didendang dalam kestabilan ekonomi dan pentadbiran."
+            }
+        };
+
+        // Ambil data dari LocalStorage
+        const userName = localStorage.getItem("namaPelajar") || "Pelajar";
+        const scores = JSON.parse(localStorage.getItem("riasekScores")) || {R:0, I:0, A:0, S:0, E:0, K:0};
+        
+        document.getElementById("headerName").innerText = "KEPUTUSAN: " + userName.toUpperCase();
+
+        // Cari Unit Tertinggi
+        let highestScore = -1;
+        let highestUnit = 'R';
+        const totalPossible = 1; // Berdasarkan 1 soalan setiap unit dalam fail sebelum ni
+
+        for (let unit in scores) {
+            let percentage = (scores[unit] / totalPossible) * 100;
+            if (percentage > 100) percentage = 100;
+            
+            // Animasi Bar
+            setTimeout(() => {
+                document.getElementById("bar-" + unit).style.width = percentage + "%";
+                document.getElementById("bar-" + unit).innerText = percentage + "%";
+            }, 500);
+
+            if (scores[unit] > highestScore) {
+                highestScore = scores[unit];
+                highestUnit = unit;
+            }
+        }
+
+        // Paparkan Analisis Detail
+        const result = riasekDetails[highestUnit];
+        document.getElementById("topUnitTitle").innerText = "UNIT DOMINAN ANDA: " + result.title;
+        document.getElementById("topUnitDesc").innerHTML = `
+            <strong>SIAPA ANDA?</strong><br>
+            ${result.desc}<br><br>
+            <strong>CERITA HALA TUJU ANDA:</strong><br>
+            ${result.story}
+        `;
+
+        function showQuickInfo(u) {
+            alert(riasekDetails[u].title + "\n\n" + riasekDetails[u].desc);
+        }
+    </script>
+</body>
+</html>
