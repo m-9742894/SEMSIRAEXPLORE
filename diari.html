@@ -6,6 +6,9 @@
     <title>Portfolio Kerjaya Impian - SEMSIRA</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
         :root {
             --bg-body: #f8fafc;
@@ -30,6 +33,7 @@
             background: #ffffff;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            /* Memastikan PDF tahu di mana nak start page baru */
             page-break-after: always;
         }
 
@@ -105,7 +109,6 @@
             padding: 5px;
         }
 
-        /* Tips Section */
         .tips-container {
             margin-top: 25px;
             display: grid;
@@ -132,137 +135,181 @@
         .big-quote { font-family: 'Great Vibes', cursive; font-size: 50px; color: var(--dark-navy); }
         .author { font-family: 'Orbitron', sans-serif; letter-spacing: 3px; color: var(--accent); margin-top: 10px; }
 
-        .btn-print {
+        .control-panel {
             position: fixed; bottom: 30px; right: 30px;
-            background: var(--dark-navy); color: white;
-            padding: 15px 30px; border-radius: 50px;
+            display: flex; gap: 10px; z-index: 999;
+        }
+
+        .btn-print, .btn-tempah {
+            padding: 15px 25px; border-radius: 50px;
             font-family: 'Orbitron', sans-serif; border: none;
             cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 999;
+            color: white; font-weight: bold; font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .btn-print { background: var(--dark-navy); }
+        .btn-tempah { background: #fbbf24; color: #0f172a; }
+        
+        #receipt-overlay {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 1000;
+            overflow-y: auto; padding: 20px;
+        }
+        .receipt-card {
+            background: white; width: 100mm; margin: 20px auto;
+            padding: 30px; border: 2px solid #0f172a; position: relative;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        .receipt-header { text-align: center; border-bottom: 2px dashed #eee; padding-bottom: 15px; margin-bottom: 20px; }
+        .receipt-row { display: flex; justify-content: space-between; margin: 10px 0; font-size: 14px; }
+        
+        .btn-receipt-print {
+            width: 100%; padding: 12px; background: #64748b;
+            color: white; border: none; margin-top: 20px; cursor: pointer;
+            font-family: 'Orbitron'; border-radius: 5px;
+        }
+        .btn-send-now {
+            width: 100%; padding: 15px; background: #0088cc;
+            color: white; border: none; margin-top: 10px; cursor: pointer;
+            font-family: 'Orbitron'; font-weight: bold; border-radius: 5px;
         }
 
         @media print {
-            .btn-print { display: none; }
+            .control-panel, #receipt-overlay button, .btn-print, .btn-tempah, .btn-receipt-print, .btn-send-now, #close-receipt { display: none !important; }
             body { background: white; }
-            .a4-page { margin: 0; box-shadow: none; border: none; }
-            td { border: 1px solid #000 !important; }
+            #receipt-overlay { position: absolute; background: white; display: block; padding: 0; }
+            .receipt-card { border: 1px solid #000; margin: 0; width: 100%; box-shadow: none; }
+            body.printing-receipt #content-to-export { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <button class="btn-print" onclick="window.print()">
-        <i class="fas fa-print"></i> CETAK PORTFOLIO
-    </button>
+    <div class="control-panel">
+        <button class="btn-print" onclick="window.print()">
+            <i class="fas fa-print"></i> CETAK DIARI
+        </button>
+        <button class="btn-tempah" onclick="showReceipt()">
+            <i class="fas fa-shopping-cart"></i> TEMPAH DIARI ANDA
+        </button>
+    </div>
 
-    <div class="a4-page">
-        <div class="page-header">
-            <div class="brand-logo">SEMSIRA / 2026</div>
-            <div class="page-number">P.01</div>
-        </div>
-        <div class="title-block">
-            <h1>Profil & Matlamat</h1>
-            <div class="title-line"></div>
-        </div>
-        <div class="grid-info">
-            <div class="card"><h4>Nama Calon</h4><p id="printNama">-</p></div>
-            <div class="card"><h4>Dominasi RIASEC</h4><p id="printUnit">-</p></div>
-        </div>
-        <div class="card" style="margin-bottom: 20px;">
-            <h4>Kerjaya Impian Utama</h4>
-            <p id="namaKerjaya" style="font-size: 20px;">-</p>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div class="card"><h4>Syarat Am</h4><div id="syaratAm" style="font-size: 12px; line-height: 1.5;">-</div></div>
-            <div class="card"><h4>Syarat Khas</h4><div id="syaratKhas" style="font-size: 12px; line-height: 1.5;">-</div></div>
-        </div>
-        <div class="mandate-highlight">
-            <h5 style="color: #b45309; font-size: 12px; margin-bottom: 5px;"><i class="fas fa-award"></i> MANDAT AKADEMIK BIDANG</h5>
-            <p id="mandatTeks" style="font-size: 13px; font-weight: 500;">-</p>
+    <div id="receipt-overlay">
+        <div class="receipt-card">
+            <div class="receipt-header">
+                <h2 style="font-family: 'Orbitron'; font-size: 20px; color: #0f172a;">RESIT TEMPAHAN</h2>
+                <p style="font-size: 12px; margin-top: 5px; font-weight: bold;">UBK SEMSIRA 2026</p>
+            </div>
+            <div class="receipt-row"><span>Nama Calon:</span><b id="recNama">-</b></div>
+            <div class="receipt-row"><span>Perkara:</span><b>Tempahan Diari Fizikal</b></div>
+            <div class="receipt-row"><span>Harga:</span><b style="font-size: 18px; color: #1e293b;">RM 2.00</b></div>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+            <p style="font-size: 12px; text-align: center; color: #475569; line-height: 1.6;">
+                Sila ambil tempahan anda di:<br>
+                <b style="color: #0f172a;">Bilik Kaunseling SMK Syed Sirajuddin</b><br>
+                <br>
+                <i>*Sila serahkan receipt tempahan sebagai bukti pengambilan.</i>
+            </p>
+            
+            <button class="btn-receipt-print" onclick="printReceiptOnly()">
+                <i class="fas fa-print"></i> CETAK RECEIPT
+            </button>
+            <button class="btn-send-now" id="btnHantar" onclick="generateAndSendPDF()">
+                <i class="fab fa-telegram-plane"></i> HANTAR TEMPAHAN SEKARANG
+            </button>
+            
+            <p id="close-receipt" onclick="document.getElementById('receipt-overlay').style.display='none'" style="text-align:center; color:red; margin-top:15px; cursor:pointer; font-size:11px; font-weight:bold; text-transform:uppercase;">[ Batal ]</p>
         </div>
     </div>
 
-    <div class="a4-page">
-        <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div>P.02</div></div>
-        <div class="title-block"><h1>Destinasi Pendidikan</h1><div class="title-line"></div></div>
-        <div class="card" style="min-height: 800px; background: white; border: 1px solid #cbd5e1;">
-            <h4>Universiti & Detail Program</h4>
-            <div id="uniDetail" style="margin-top: 15px; font-size: 13px; line-height: 1.8;">-</div>
+    <div id="content-to-export">
+        <div class="a4-page">
+            <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div class="page-number">P.01</div></div>
+            <div class="title-block"><h1>Profil & Matlamat</h1><div class="title-line"></div></div>
+            <div class="grid-info">
+                <div class="card"><h4>Nama Calon</h4><p id="printNama">-</p></div>
+                <div class="card"><h4>Dominasi RIASEC</h4><p id="printUnit">-</p></div>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h4>Kerjaya Impian Utama</h4>
+                <p id="namaKerjaya" style="font-size: 20px;">-</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="card"><h4>Syarat Am</h4><div id="syaratAm" style="font-size: 12px; line-height: 1.5;">-</div></div>
+                <div class="card"><h4>Syarat Khas</h4><div id="syaratKhas" style="font-size: 12px; line-height: 1.5;">-</div></div>
+            </div>
+            <div class="mandate-highlight">
+                <h5 style="color: #b45309; font-size: 12px; margin-bottom: 5px;"><i class="fas fa-award"></i> MANDAT AKADEMIK BIDANG</h5>
+                <p id="mandatTeks" style="font-size: 13px; font-weight: 500;">-</p>
+            </div>
         </div>
-    </div>
 
-    <div class="a4-page">
-        <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div>P.03</div></div>
-        <div class="title-block"><h1>Tracker Prestasi</h1><div class="title-line"></div></div>
-        <p style="font-size: 11px; margin-bottom: 10px; font-weight: 600;">REKOD GRED UJIAN (Tulis Gred: A, B, C...)</p>
-        <table>
-            <thead>
-                <tr>
-                    <th width="20%">UJIAN</th><th>BM</th><th>BI</th><th>SEJ</th><th>MATE</th>
-                    <th><div style="font-size: 8px;">ELEKTIF 1</div></th>
-                    <th><div style="font-size: 8px;">ELEKTIF 2</div></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>UJIAN 1</strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td><strong>UJIAN 2</strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td><strong>UJIAN 3</strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </tbody>
-        </table>
-
-        <p style="font-size: 11px; margin: 40px 0 10px 0; font-weight: 600;">ANALISIS & TINDAKAN</p>
-        <table>
-            <thead>
-                <tr><th>SUBJEK PALING CEMERLANG</th><th>SUBJEK PERLU PERHATIAN</th></tr>
-            </thead>
-            <tbody>
-                <tr><td style="height: 150px;"></td><td></td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="a4-page">
-        <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div>P.04</div></div>
-        <div class="title-block"><h1>Jadual Perancangan</h1><div class="title-line"></div></div>
-        <table>
-            <thead>
-                <tr>
-                    <th width="12%">WAKTU</th><th>ISNIN</th><th>SELASA</th><th>RABU</th><th>KHAMIS</th><th>JUMAAT</th><th>SABTU</th><th>AHAD</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="height: 110px;"><td><strong>PAGI</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr style="height: 110px;"><td><strong>PETANG</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr style="height: 110px;"><td><strong>MALAM</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </tbody>
-        </table>
-
-        <div class="tips-container">
-            <div class="tip-item"><b>Mornings for Mastery:</b> Buat subjek paling susah waktu pagi.</div>
-            <div class="tip-item"><b>Active Recovery:</b> Gunakan petang Sabtu untuk aktiviti luar.</div>
-            <div class="tip-item"><b>Zero Distraction:</b> Simpan telefon di luar bilik waktu belajar.</div>
-            <div class="tip-item"><b>Sunday Reset:</b> Rancang subjek minggu depan pada malam Ahad.</div>
+        <div class="a4-page">
+            <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div>P.02</div></div>
+            <div class="title-block"><h1>Destinasi Pendidikan</h1><div class="title-line"></div></div>
+            <div class="card" style="min-height: 800px; background: white; border: 1px solid #cbd5e1;">
+                <h4>Universiti & Detail Program</h4>
+                <div id="uniDetail" style="margin-top: 15px; font-size: 13px; line-height: 1.8;">-</div>
+            </div>
         </div>
-    </div>
 
-    <div class="a4-page">
-        <div class="quote-wrap">
-            <p class="big-quote">"Masa depan adalah milik mereka yang percaya pada keindahan impian mereka."</p>
-            <p class="author">— Eleanor Roosevelt —</p>
-            <div style="margin-top: 40px; max-width: 500px; line-height: 2; color: #64748b; font-size: 14px;">
-                Tuliskan impian anda hari ini di atas kertas ini, dan biarkan ia menjadi saksi kepada kejayaan anda pada masa hadapan. Teruskan berjuang, calon <b><span id="kerjayaFinal"></span></b>!
+        <div class="a4-page">
+            <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div>P.03</div></div>
+            <div class="title-block"><h1>Tracker Prestasi</h1><div class="title-line"></div></div>
+            <table>
+                <thead>
+                    <tr><th width="20%">UJIAN</th><th>BM</th><th>BI</th><th>SEJ</th><th>MATE</th><th>ELEKTIF 1</th><th>ELEKTIF 2</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>UJIAN 1</strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td><strong>UJIAN 2</strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td><strong>UJIAN 3</strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="a4-page">
+            <div class="page-header"><div class="brand-logo">SEMSIRA / 2026</div><div>P.04</div></div>
+            <div class="title-block"><h1>Jadual Perancangan</h1><div class="title-line"></div></div>
+            <table>
+                <thead>
+                    <tr><th width="12%">WAKTU</th><th>ISNIN</th><th>SELASA</th><th>RABU</th><th>KHAMIS</th><th>JUMAAT</th><th>SABTU</th><th>AHAD</th></tr>
+                </thead>
+                <tbody>
+                    <tr style="height: 110px;"><td><strong>PAGI</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr style="height: 110px;"><td><strong>PETANG</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr style="height: 110px;"><td><strong>MALAM</strong></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="a4-page">
+            <div class="quote-wrap">
+                <p class="big-quote">"Masa depan adalah milik mereka yang percaya pada keindahan impian mereka."</p>
+                <p class="author">— Eleanor Roosevelt —</p>
+                <div style="margin-top: 40px; max-width: 500px; line-height: 2; color: #64748b; font-size: 14px;">
+                    Teruskan berjuang, calon <b><span id="kerjayaFinal"></span></b>!
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        const TELEGRAM_TOKEN = "8527375075:AAGfCQ_6zfO2JFI-R3WZtXukIWvofDT0Aa4";
+        const CHAT_ID = "-1003773433373"; 
+
         window.onload = function() {
             const nama = localStorage.getItem("namaPelajar") || "PELAJAR";
             const scores = JSON.parse(localStorage.getItem("riasekScores")) || {R:0, I:0, A:0, S:0, E:0, K:0};
             let highestUnit = 'R'; let maxScore = -1;
             for(let u in scores) { if(scores[u] > maxScore) { maxScore = scores[u]; highestUnit = u; } }
+            
             document.getElementById("printNama").innerText = nama.toUpperCase();
+            document.getElementById("recNama").innerText = nama.toUpperCase();
             document.getElementById("printUnit").innerText = getFullUnitName(highestUnit);
+            
             const pilihan = JSON.parse(localStorage.getItem("pilihanKerjaya"));
             if(pilihan) {
                 document.getElementById("namaKerjaya").innerText = pilihan.nama.toUpperCase();
@@ -270,16 +317,70 @@
                 document.getElementById("syaratAm").innerText = pilihan.am;
                 document.getElementById("syaratKhas").innerText = pilihan.khas;
                 document.getElementById("uniDetail").innerHTML = pilihan.universiti;
-                let m = "Tingkatkan gred purata (GPA) anda setiap ujian.";
-                const n = pilihan.nama.toLowerCase();
-                if(n.includes("akaun")) m = "MATEMATIK KRITIKAL. Sasarkan gred A untuk meritokrasi UPU.";
-                else if(n.includes("polis")) m = "LULUS BM & SEJARAH dengan kepujian adalah syarat wajib SPA.";
-                document.getElementById("mandatTeks").innerText = m;
+                document.getElementById("mandatTeks").innerText = "Tingkatkan gred purata (GPA) anda setiap ujian.";
             }
         };
+
         function getFullUnitName(u) {
             const map = { R:"REALISTIK", I:"INVESTIGATIF", A:"ARTISTIK", S:"SOSIAL", E:"ENTERPRISING", K:"KONVENSIONAL" };
             return map[u] || u;
+        }
+
+        function showReceipt() { document.getElementById('receipt-overlay').style.display = 'block'; }
+        
+        function printReceiptOnly() {
+            document.body.classList.add('printing-receipt');
+            window.print();
+            document.body.classList.remove('printing-receipt');
+        }
+
+        async function generateAndSendPDF() {
+            const btn = document.getElementById("btnHantar");
+            const nama = document.getElementById("printNama").innerText || "Pelajar";
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menghantar...';
+            btn.disabled = true;
+
+            const element = document.getElementById('content-to-export');
+            
+            // PILIHAN PDF YANG DIPERBAIKI UNTUK SIZE A4 & PAGE BREAK
+            const opt = {
+                margin: 0,
+                filename: `DIARI_${nama}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, 
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] } // Guna CSS page-break
+            };
+
+            try {
+                const pdfBlob = await html2pdf().set(opt).from(element).output('blob');
+                const formData = new FormData();
+                formData.append('chat_id', CHAT_ID);
+                formData.append('document', pdfBlob, `DIARI_${nama}.pdf`);
+                formData.append('caption', `📖 TEMPAHAN DIARI FIZIKAL\n👤 Nama: ${nama}\n💰 Bayaran: RM 2.00`);
+
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendDocument`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert("BERJAYA! Tempahan dihantar.");
+                    document.getElementById('receipt-overlay').style.display = 'none';
+                } else {
+                    alert("GAGAL! Sila cuba lagi.");
+                }
+            } catch (error) {
+                alert("RALAT TEKNIKAL!");
+            } finally {
+                btn.innerHTML = '<i class="fab fa-telegram-plane"></i> HANTAR TEMPAHAN SEKARANG';
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
