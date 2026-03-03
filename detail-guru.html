@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Pendidikan: Guru & Pendidik - SEMSIRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #0a0b1e; color: white; padding: 40px 20px; line-height: 1.6; }
+        .background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #1e3799 0%, #000000 100%); z-index: -1; }
+        .container { max-width: 1100px; margin: 0 auto; position: relative; }
+        
+        .diary-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #4a69bd;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            box-shadow: 0 0 10px rgba(74, 105, 189, 0.3);
+        }
+        .diary-btn:hover {
+            background: #fff;
+            color: #4a69bd;
+            box-shadow: 0 0 20px #4a69bd;
+            transform: translateY(-2px);
+        }
+
+        h1 { font-family: 'Orbitron', sans-serif; color: #4a69bd; text-align: center; margin-bottom: 40px; text-transform: uppercase; }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+
+        .requirement-box { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 25px; 
+            border-radius: 15px; 
+            border-left: 5px solid #4a69bd;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title { font-family: 'Orbitron', sans-serif; color: #4a69bd; margin-bottom: 15px; font-size: 1rem; }
+        
+        .info-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px); 
+            border-radius: 15px; 
+            border: 1px solid rgba(74, 105, 189, 0.3); 
+            padding: 20px; 
+            overflow-x: auto; 
+        }
+
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th { background: rgba(74, 105, 189, 0.2); color: #4a69bd; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        .uni-name { color: #fff; font-weight: bold; font-size: 1rem; }
+        .badge { background: #4a69bd; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.7rem; margin-top: 5px; display: inline-block; }
+
+        .back-btn { 
+            display: inline-block; margin-top: 30px; padding: 12px 35px; border: 1px solid #4a69bd; 
+            color: #4a69bd; text-decoration: none; border-radius: 5px; font-family: 'Orbitron', sans-serif; 
+            transition: 0.3s; font-size: 0.8rem;
+        }
+        .back-btn:hover { background: #4a69bd; color: #fff; }
+
+        @media (max-width: 768px) { 
+            .info-grid { grid-template-columns: 1fr; }
+            .diary-btn { position: static; margin-bottom: 20px; width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <a href="diari.html" class="diary-btn">
+            <i class="fas fa-book"></i> CETAK DIARI
+        </a>
+
+        <h1>INFO UPU: GURU & PENDIDIK</h1>
+
+        <div class="info-grid">
+            <div class="requirement-box">
+                <h3 class="section-title"><i class="fas fa-id-card"></i> SYARAT AM (WAJIB)</h3>
+                <p>• Warganegara Malaysia.<br>
+                   • Berumur tidak melebihi 20 tahun (bagi IPG).<br>
+                   • Aktif dalam aktiviti kokurikulum.<br>
+                   • Sihat tubuh badan.</p>
+            </div>
+
+            <div class="requirement-box" style="border-left-color: #60a3bc;">
+                <h3 class="section-title" style="color: #60a3bc;"><i class="fas fa-graduation-cap"></i> SYARAT KHAS (SPM)</h3>
+                <p>• <strong>Gred A:</strong> Minimum 5 subjek (Laluan IPG).<br>
+                   • <strong>BM, Sejarah, BI:</strong> Wajib sekurang-kurangnya kepujian.<br>
+                   • <strong>Ujian UKCG:</strong> Wajib lulus ujian kelayakan calon guru.<br>
+                   • <strong>Temuduga Video:</strong> Wajib lulus saringan.</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Institusi & Laluan</th>
+                        <th>Program Pengajian</th>
+                        <th>Tempoh</th>
+                        <th>Status Perlantikan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="uni-name">IPG (Seluruh Malaysia)</span><br><small>Kementerian Pendidikan Malaysia</small></td>
+                        <td>PISMP (Program Ijazah Sarjana Muda Perguruan)<br><span class="badge">LEPASAN SPM</span></td>
+                        <td>1 thn (PPISMP) + 4 thn</td>
+                        <td>Guru Sekolah Rendah (DG41)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">UPSI</span><br><small>Tanjung Malim, Perak</small></td>
+                        <td>Ijazah Sarjana Muda Pendidikan (ISMP)<br><span class="badge">LEPASAN MATRIK/STPM</span></td>
+                        <td>4 Tahun</td>
+                        <td>Guru Sekolah Menengah</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">Universiti Malaya (UM)</span><br><small>Kuala Lumpur</small></td>
+                        <td>Ijazah Sarjana Muda Pendidikan (Pelbagai Opsyen)<br><span class="badge">IJAZAH</span></td>
+                        <td>4 Tahun</td>
+                        <td>Guru Sekolah Menengah</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">UiTM Puncak Alam</span><br><small>Selangor</small></td>
+                        <td>Ijazah Sarjana Muda Pendidikan (Sains/Seni/BI)<br><span class="badge">IJAZAH</span></td>
+                        <td>4 Tahun</td>
+                        <td>Guru Sekolah Menengah</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">Universiti Kebangsaan Malaysia (UKM)</span><br><small>Bangi, Selangor</small></td>
+                        <td>Ijazah Sarjana Muda Pendidikan (Sukan/Khas)<br><span class="badge">IJAZAH</span></td>
+                        <td>4 Tahun</td>
+                        <td>Guru Sekolah Menengah</td>
+                    </tr>
+                    <tr>
+                        <td><span class="uni-name">Kolej Universiti Islam (KUIS)</span><br><small>Selangor</small></td>
+                        <td>Ijazah Sarjana Muda Pendidikan Islam / Awal Kanak-kanak<br><span class="badge">IJAZAH (Swasta/UA)</span></td>
+                        <td>4 Tahun</td>
+                        <td>Guru Sekolah / Swasta</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="kerjaya-s.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE UNIT S</a>
+        </div>
+    </div>
+</body>
+</html>
