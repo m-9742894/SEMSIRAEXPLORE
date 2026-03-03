@@ -5,76 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hala Tuju Kerjaya SEMSIRA</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
             background: #0a0b1e;
             color: white;
-            overflow: hidden; /* Elakkan scroll masa animasi */
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
-
-        /* Animasi Latar Belakang Digital */
         .background {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
             z-index: -1;
         }
-
-        .circles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
         .circles li {
-            position: absolute;
-            display: block;
-            list-style: none;
-            width: 20px;
-            height: 20px;
-            background: rgba(0, 255, 255, 0.2);
-            animation: animate 25s linear infinite;
-            bottom: -150px;
+            position: absolute; display: block; list-style: none;
+            width: 20px; height: 20px; background: rgba(0, 210, 255, 0.2);
+            animation: animate 25s linear infinite; bottom: -150px;
         }
-
         @keyframes animate {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
             100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
         }
-
-        /* Container Kandungan */
         .container {
             text-align: center;
             padding: 40px;
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
             max-width: 800px;
             z-index: 1;
         }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3rem;
@@ -82,102 +51,60 @@
             background: linear-gradient(to right, #00d2ff, #3a7bd5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
-
         .unit-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #00d2ff;
             font-weight: bold;
             margin-bottom: 25px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #d1d1d1;
-        }
-
-        /* Grid Icon Kerjaya */
         .icons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 30px;
             font-size: 2rem;
             color: #3a7bd5;
         }
-
-        .icons i {
-            transition: 0.3s;
-        }
-
-        .icons i:hover {
-            color: #00d2ff;
-            transform: translateY(-10px);
-        }
-
-        /* Button Gaya Digital */
+        p { margin-bottom: 30px; color: #d1d1d1; line-height: 1.6; }
         .btn {
             display: inline-block;
             padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
             color: white;
             text-decoration: none;
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
             border-radius: 50px;
+            font-weight: bold;
             transition: 0.4s;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
         }
+        .btn:hover { transform: scale(1.05); letter-spacing: 1px; }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(0, 210, 255, 0.6);
-            letter-spacing: 1px;
-        }
-
-        /* Tambah variasi saiz kotak animasi */
+        /* Posisi bulat-bulat animasi */
         .circles li:nth-child(1){ left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
         .circles li:nth-child(2){ left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
         .circles li:nth-child(3){ left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
         .circles li:nth-child(4){ left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-        .circles li:nth-child(5){ left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
     </style>
 </head>
 <body>
-
     <div class="background">
-        <ul class="circles">
-            <li></li><li></li><li></li><li></li><li></li>
-        </ul>
+        <ul class="circles"><li></li><li></li><li></li><li></li></ul>
     </div>
-
     <div class="container">
         <h1>KENAL PASTI HALA TUJU ANDA!</h1>
         <div class="unit-name">DISEDIAKAN OLEH UNIT BIMBINGAN DAN KAUNSELING SEMSIRA</div>
-        
         <div class="icons">
-            <i class="fas fa-user-md" title="Perubatan"></i>
-            <i class="fas fa-microchip" title="Teknologi"></i>
-            <i class="fas fa-chart-line" title="Ekonomi"></i>
-            <i class="fas fa-palette" title="Kreatif"></i>
-            <i class="fas fa-gavel" title="Undang-undang"></i>
+            <i class="fas fa-rocket"></i>
+            <i class="fas fa-microchip"></i>
+            <i class="fas fa-user-md"></i>
+            <i class="fas fa-palette"></i>
         </div>
-
-        <p>
-            Masa depan bukanlah sesuatu yang kita tunggu, tetapi sesuatu yang kita bina. 
-            Terokai potensi diri, fahami minat anda, dan pilih laluan kerjaya yang tepat 
-            untuk dunia digital masa kini. Adakah anda bersedia untuk mencorak kejayaan?
-        </p>
-
-        <a href="page2.html" class="btn">MARI MULAKAN PENGEMBARAAN</a>
+        <p>Masa depan anda bermula dengan satu langkah bijak. Terokai potensi diri dan kerjaya impian anda dalam dunia digital yang serba moden ini.</p>
+        
+        <a href="input.html" class="btn">MARI MULAKAN PENGEMBARAAN</a>
     </div>
-
 </body>
 </html>
