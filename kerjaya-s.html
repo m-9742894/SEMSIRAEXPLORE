@@ -32,12 +32,11 @@
         .header-section {
             text-align: center;
             margin-bottom: 50px;
-            animation: fadeInDown 0.8s ease-out;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            color: #48ffc9; /* Warna tema sosial (turquoise) */
+            color: #48ffc9;
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 0 0 15px rgba(72, 255, 201, 0.4);
@@ -49,10 +48,9 @@
             text-transform: uppercase;
         }
 
-        /* Grid Kerjaya */
         .career-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -63,15 +61,21 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.3s;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .career-card:hover {
             transform: translateY(-10px);
-            background: rgba(72, 255, 201, 0.1);
+            background: rgba(72, 255, 201, 0.15);
             border-color: #48ffc9;
-            box-shadow: 0 10px 30px rgba(72, 255, 201, 0.2);
+            box-shadow: 0 0 20px rgba(72, 255, 201, 0.4);
         }
 
         .career-card i {
@@ -83,13 +87,24 @@
         .career-card h3 {
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #48ffc9;
         }
 
         .career-card p {
             font-size: 0.9rem;
             color: #bbb;
             line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #48ffc9;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .back-btn {
@@ -109,11 +124,6 @@
             background: #48ffc9;
             color: #000;
         }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
@@ -124,45 +134,53 @@
         <div class="header-section">
             <p class="subtitle">Eksplorasi Kerjaya</p>
             <h1>UNIT SOSIAL (S)</h1>
-            <p>Bidang yang mementingkan kebajikan manusia, pengajaran, dan perkhidmatan komuniti.</p>
+            <p>Pilih kerjaya di bawah untuk melihat syarat UPU & Universiti.</p>
         </div>
 
         <div class="career-grid">
-            <div class="career-card">
+            
+            <div class="career-card" onclick="window.location.href='detail-guru.html'">
                 <i class="fas fa-user-graduate"></i>
                 <h3>Guru / Pendidik</h3>
                 <p>Menyampaikan ilmu pengetahuan dan membentuk sahsiah serta masa depan generasi muda.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-kaunselor.html'">
                 <i class="fas fa-hand-holding-heart"></i>
                 <h3>Kaunselor / Pakar Psikologi</h3>
                 <p>Memberi bimbingan mental dan emosi untuk membantu orang lain mengatasi cabaran hidup.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-jururawat.html'">
                 <i class="fas fa-stethoscope"></i>
                 <h3>Jururawat / Pegawai Kesihatan</h3>
-                <p>Memberikan rawatan dan penjagaan rapi kepada pesakit dengan penuh kesabaran dan kasih sayang.</p>
+                <p>Memberikan rawatan dan penjagaan rapi kepada pesakit dengan penuh kasih sayang.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-kebajikan.html'">
                 <i class="fas fa-users"></i>
                 <h3>Pegawai Kebajikan Masyarakat</h3>
-                <p>Membantu golongan yang memerlukan dan menguruskan bantuan komuniti secara sistematik.</p>
+                <p>Membantu golongan memerlukan dan menguruskan bantuan komuniti secara sistematik.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-pr.html'">
                 <i class="fas fa-comments"></i>
                 <h3>Pegawai Perhubungan Awam</h3>
                 <p>Membina jambatan komunikasi yang baik antara organisasi dengan masyarakat luar.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-ngo.html'">
                 <i class="fas fa-hands-helping"></i>
-                <h3>Penyelaras NGO / Sukarelawan</h3>
-                <p>Menggerakkan misi kemanusiaan di peringkat global untuk membantu mangsa bencana atau kemiskinan.</p>
+                <h3>Penyelaras NGO</h3>
+                <p>Menggerakkan misi kemanusiaan di peringkat global untuk membantu mangsa bencana.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
+
         </div>
 
         <div style="text-align: center;">
