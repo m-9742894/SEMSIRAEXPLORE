@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerjaya Sosial - SEMSIRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0b1e;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .background {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1b3535 0%, #08090a 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #48ffc9; /* Warna tema sosial (turquoise) */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(72, 255, 201, 0.4);
+        }
+
+        .subtitle {
+            color: #ccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Grid Kerjaya */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .career-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(72, 255, 201, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+            background: rgba(72, 255, 201, 0.1);
+            border-color: #48ffc9;
+            box-shadow: 0 10px 30px rgba(72, 255, 201, 0.2);
+        }
+
+        .career-card i {
+            font-size: 3rem;
+            color: #48ffc9;
+            margin-bottom: 20px;
+        }
+
+        .career-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .career-card p {
+            font-size: 0.9rem;
+            color: #bbb;
+            line-height: 1.5;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid #48ffc9;
+            color: #48ffc9;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #48ffc9;
+            color: #000;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="container">
+        <div class="header-section">
+            <p class="subtitle">Eksplorasi Kerjaya</p>
+            <h1>UNIT SOSIAL (S)</h1>
+            <p>Bidang yang mementingkan kebajikan manusia, pengajaran, dan perkhidmatan komuniti.</p>
+        </div>
+
+        <div class="career-grid">
+            <div class="career-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Guru / Pendidik</h3>
+                <p>Menyampaikan ilmu pengetahuan dan membentuk sahsiah serta masa depan generasi muda.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Kaunselor / Pakar Psikologi</h3>
+                <p>Memberi bimbingan mental dan emosi untuk membantu orang lain mengatasi cabaran hidup.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-stethoscope"></i>
+                <h3>Jururawat / Pegawai Kesihatan</h3>
+                <p>Memberikan rawatan dan penjagaan rapi kepada pesakit dengan penuh kesabaran dan kasih sayang.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-users"></i>
+                <h3>Pegawai Kebajikan Masyarakat</h3>
+                <p>Membantu golongan yang memerlukan dan menguruskan bantuan komuniti secara sistematik.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-comments"></i>
+                <h3>Pegawai Perhubungan Awam</h3>
+                <p>Membina jambatan komunikasi yang baik antara organisasi dengan masyarakat luar.</p>
+            </div>
+
+            <div class="career-card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Penyelaras NGO / Sukarelawan</h3>
+                <p>Menggerakkan misi kemanusiaan di peringkat global untuk membantu mangsa bencana atau kemiskinan.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="keputusan.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE KEPUTUSAN</a>
+        </div>
+    </div>
+
+</body>
+</html>
