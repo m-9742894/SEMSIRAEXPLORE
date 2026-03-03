@@ -85,9 +85,9 @@
 <body>
     <div class="background"></div>
     <div class="container">
-        <a href="diari-awam.html" class="diary-btn">
+        <button onclick="hantarDataAwam()" class="diary-btn">
             <i class="fas fa-book"></i> CETAK DIARI
-        </a>
+        </button>
 
         <h1>INFO UPU: JURUTERA AWAM</h1>
 
@@ -151,5 +151,22 @@
             <a href="kerjaya-r.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE UNIT R</a>
         </div>
     </div>
+
+    <script>
+        function hantarDataAwam() {
+            const dataAwam = {
+                nama: "JURUTERA AWAM",
+                am: "Lulus SPM dengan mendapat sekurang-kurangnya LIMA (5) Kepujian. Lulus Sejarah dan Bahasa Melayu.",
+                khas: "Mate Tambahan (B), Fizik (B), Matematik (A). Kimia/Lukisan Kejuruteraan (Lulus).",
+                universiti: "1. UiTM Pasir Gudang: Dip. Kejuruteraan Awam<br>2. UTM Skudai: Dip. Kejuruteraan Awam<br>3. Politeknik Ungku Omar: Dip. Kejuruteraan Awam<br>4. UTHM Batu Pahat: Dip. Kejuruteraan Awam"
+            };
+
+            // Simpan ke localStorage
+            localStorage.setItem("pilihanKerjaya", JSON.stringify(dataAwam));
+
+            // Pergi ke fail diari.html (pastikan nama fail ini betul)
+            window.location.href = "diari.html";
+        }
+    </script>
 </body>
 </html>
