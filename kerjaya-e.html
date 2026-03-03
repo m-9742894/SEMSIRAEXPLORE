@@ -32,12 +32,11 @@
         .header-section {
             text-align: center;
             margin-bottom: 50px;
-            animation: fadeInDown 0.8s ease-out;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            color: #ffcc33; /* Warna tema enterprising (Gold) */
+            color: #ffcc33;
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 0 0 15px rgba(255, 204, 51, 0.4);
@@ -51,7 +50,7 @@
 
         .career-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -62,15 +61,21 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.3s;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .career-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 204, 51, 0.1);
+            background: rgba(255, 204, 51, 0.15);
             border-color: #ffcc33;
-            box-shadow: 0 10px 30px rgba(255, 204, 51, 0.2);
+            box-shadow: 0 0 20px rgba(255, 204, 51, 0.4);
         }
 
         .career-card i {
@@ -82,13 +87,24 @@
         .career-card h3 {
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #ffcc33;
         }
 
         .career-card p {
             font-size: 0.9rem;
             color: #bbb;
             line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #ffcc33;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .back-btn {
@@ -108,11 +124,6 @@
             background: #ffcc33;
             color: #000;
         }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
@@ -123,45 +134,53 @@
         <div class="header-section">
             <p class="subtitle">Eksplorasi Kerjaya</p>
             <h1>UNIT ENTERPRISING (E)</h1>
-            <p>Bidang yang mencabar daya kepimpinan, perniagaan, dan kemampuan mempengaruhi orang lain.</p>
+            <p>Pilih kerjaya di bawah untuk melihat syarat UPU & Universiti.</p>
         </div>
 
         <div class="career-grid">
-            <div class="career-card">
+            
+            <div class="career-card" onclick="window.location.href='detail-ceo.html'">
                 <i class="fas fa-briefcase"></i>
                 <h3>Usahawan / CEO</h3>
-                <p>Membina empayar perniagaan sendiri dan memimpin organisasi ke tahap global dengan strategi yang bijak.</p>
+                <p>Membina empayar perniagaan sendiri dan memimpin organisasi ke tahap global.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-pemasaran.html'">
                 <i class="fas fa-chart-line"></i>
                 <h3>Pengurus Pemasaran</h3>
-                <p>Merangka kempen yang berkuasa untuk meningkatkan jualan dan membina kepercayaan pelanggan terhadap jenama.</p>
+                <p>Merangka kempen berkuasa untuk meningkatkan jualan dan membina kepercayaan pelanggan.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-peguam.html'">
                 <i class="fas fa-gavel"></i>
-                <h3>Peguam / Konsultan Undang-undang</h3>
-                <p>Menggunakan kemahiran berhujah dan pengaruh untuk membela hak anak guam dalam sistem perundangan.</p>
+                <h3>Peguam / Konsultan</h3>
+                <p>Menggunakan kemahiran berhujah untuk membela hak anak guam dalam sistem perundangan.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-politik.html'">
                 <i class="fas fa-bullhorn"></i>
                 <h3>Pakar Strategi Politik</h3>
-                <p>Menguruskan imej awam dan strategi kempen untuk pemimpin bagi memenangi sokongan rakyat.</p>
+                <p>Menguruskan imej awam dan strategi kempen untuk pemimpin memenangi sokongan rakyat.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-hartanah.html'">
                 <i class="fas fa-handshake"></i>
                 <h3>Ejen Hartanah / Pelaburan</h3>
-                <p>Menjalankan rundingan jual beli yang kompleks dan membantu pelanggan menggandakan kekayaan mereka.</p>
+                <p>Menjalankan rundingan jual beli yang kompleks untuk menggandakan kekayaan pelanggan.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
 
-            <div class="career-card">
+            <div class="career-card" onclick="window.location.href='detail-acara.html'">
                 <i class="fas fa-users-cog"></i>
-                <h3>Pengurus Acara (Event Manager)</h3>
-                <p>Memimpin pasukan besar untuk menjayakan konsert, persidangan, atau acara korporat yang berprestij.</p>
+                <h3>Pengurus Acara</h3>
+                <p>Memimpin pasukan besar untuk menjayakan acara korporat atau konsert berprestij.</p>
+                <span class="click-hint">KLIK UNTUK INFO UPU</span>
             </div>
+
         </div>
 
         <div style="text-align: center;">
