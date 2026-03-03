@@ -26,11 +26,12 @@
             font-weight: bold;
             font-size: 0.8rem;
             transition: 0.3s;
+            border: none;
+            box-shadow: 0 0 10px rgba(162, 155, 254, 0.3);
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
-            border: none;
-            box-shadow: 0 0 10px rgba(162, 155, 254, 0.3);
         }
         .diary-btn:hover {
             background: #fff;
@@ -84,31 +85,31 @@
 <body>
     <div class="background"></div>
     <div class="container">
-        <a href="diari.html" class="diary-btn">
+        <button onclick="cetakDiari()" class="diary-btn">
             <i class="fas fa-book"></i> CETAK DIARI
-        </a>
+        </button>
 
-        <h1>INFO UPU: PENGURUS ACARA (EVENT MANAGER)</h1>
+        <h1 id="namaPekerjaan">PENGURUS ACARA (EVENT MANAGER)</h1>
 
         <div class="info-grid">
             <div class="requirement-box">
                 <h3 class="section-title"><i class="fas fa-id-card"></i> SYARAT AM (WAJIB)</h3>
-                <p>• Warganegara Malaysia.<br>
+                <p id="syaratAmPekerjaan">• Warganegara Malaysia.<br>
                    • Lulus SPM dengan mendapat sekurang-kurangnya <strong>TIGA (3) Kepujian</strong>.<br>
                    • Lulus Mata Pelajaran <strong>Sejarah</strong> dan <strong>Bahasa Melayu</strong>.</p>
             </div>
 
             <div class="requirement-box" style="border-left-color: #fd79a8;">
                 <h3 class="section-title" style="color: #fd79a8;"><i class="fas fa-calendar-check"></i> SYARAT KHAS (SPM)</h3>
-                <p>• <strong>Bahasa Inggeris:</strong> Minimum Gred C (Sangat penting untuk berurusan dengan pembekal/klien).<br>
-                   • <strong>Matematik:</strong> Lulus (Penting untuk pengurusan bajet).<br>
-                   • Sangat aktif dalam kokurikulum (Terutamanya jawatan kepimpinan).<br>
+                <p id="syaratKhasPekerjaan">• <strong>Bahasa Inggeris:</strong> Minimum Gred C.<br>
+                   • <strong>Matematik:</strong> Lulus.<br>
+                   • Sangat aktif dalam kokurikulum.<br>
                    • Mempunyai ketahanan fizikal untuk bekerja pada waktu fleksibel.</p>
             </div>
         </div>
 
         <div class="info-card">
-            <table>
+            <table id="universitiPekerjaan">
                 <thead>
                     <tr>
                         <th>Universiti & Lokasi</th>
@@ -132,13 +133,13 @@
                     </tr>
                     <tr>
                         <td><span class="uni-name">Taylor's University</span><br><small>Subang Jaya</small></td>
-                        <td>Bachelor of International Events Management (Hons)<br><span class="badge">SWASTA (Standard Global)</span></td>
+                        <td>Bachelor of International Events Management (Hons)<br><span class="badge">SWASTA</span></td>
                         <td>3 Tahun</td>
                         <td>RM 8,500.00</td>
                     </tr>
                     <tr>
                         <td><span class="uni-name">MSU (Shah Alam)</span><br><small>Selangor</small></td>
-                        <td>Bachelor in Event Management (Hons)<br><span class="badge">SWASTA (Praktikal)</span></td>
+                        <td>Bachelor in Event Management (Hons)<br><span class="badge">SWASTA</span></td>
                         <td>3 Tahun</td>
                         <td>RM 5,500.00</td>
                     </tr>
@@ -156,5 +157,28 @@
             <a href="kerjaya-e.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE UNIT E</a>
         </div>
     </div>
+
+    <script>
+    function cetakDiari() {
+        // Ambil data berdasarkan ID yang kita letak tadi
+        const nama = document.getElementById("namaPekerjaan").innerText;
+        const am = document.getElementById("syaratAmPekerjaan").innerText;
+        const khas = document.getElementById("syaratKhasPekerjaan").innerText;
+        const uni = document.getElementById("universitiPekerjaan").innerHTML; 
+
+        // Simpan dalam localStorage
+        const dataPilihan = {
+            nama: nama,
+            am: am,
+            khas: khas,
+            universiti: uni
+        };
+
+        localStorage.setItem("pilihanKerjaya", JSON.stringify(dataPilihan));
+
+        // Buka page diari.html
+        window.location.href = "diari.html";
+    }
+    </script>
 </body>
 </html>
