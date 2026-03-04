@@ -32,6 +32,7 @@
             gap: 10px;
             border: none;
             box-shadow: 0 0 10px rgba(118, 255, 3, 0.3);
+            cursor: pointer;
         }
         .diary-btn:hover {
             background: #fff;
@@ -85,21 +86,21 @@
 <body>
     <div class="background"></div>
     <div class="container">
-        <a href="diari.html" class="diary-btn">
+        <button onclick="simpanDanKeDiari()" class="diary-btn">
             <i class="fas fa-book"></i> CETAK DIARI
-        </a>
+        </button>
 
         <h1>INFO UPU: PERTANIAN MODEN (AGROTEKNOLOGI)</h1>
 
         <div class="info-grid">
-            <div class="requirement-box">
+            <div class="requirement-box" id="boxAm">
                 <h3 class="section-title"><i class="fas fa-id-card"></i> SYARAT AM (WAJIB)</h3>
                 <p>• Warganegara Malaysia.<br>
                    • Lulus SPM dengan mendapat sekurang-kurangnya <strong>TIGA (3) Kepujian</strong>.<br>
                    • Lulus Mata Pelajaran <strong>Sejarah</strong> dan <strong>Bahasa Melayu</strong>.</p>
             </div>
 
-            <div class="requirement-box" style="border-left-color: #ffd700;">
+            <div class="requirement-box" id="boxKhas" style="border-left-color: #ffd700;">
                 <h3 class="section-title" style="color: #ffd700;"><i class="fas fa-seedling"></i> SYARAT KHAS (SPM)</h3>
                 <p>• <strong>Sains / Biologi / Pertanian:</strong> Minimum Gred C.<br>
                    • <strong>Matematik:</strong> Minimum Gred C.<br>
@@ -109,7 +110,7 @@
         </div>
 
         <div class="info-card">
-            <table>
+            <table id="uniTable">
                 <thead>
                     <tr>
                         <th>Universiti & Lokasi</th>
@@ -163,5 +164,36 @@
             <a href="kerjaya-r.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI KE UNIT R</a>
         </div>
     </div>
+
+    <script>
+        function simpanDanKeDiari() {
+            // Ambil data syarat
+            const syaratAm = document.querySelector("#boxAm p").innerHTML;
+            const syaratKhas = document.querySelector("#boxKhas p").innerHTML;
+            
+            // Ambil data universiti dari table
+            let uniData = "";
+            const rows = document.querySelectorAll("#uniTable tbody tr");
+            rows.forEach((row, index) => {
+                const cols = row.querySelectorAll("td");
+                const uName = cols[0].innerText.replace(/\n/g, " ");
+                const prog = cols[1].innerText.split('\n')[0];
+                uniData += `${index + 1}. ${uName}: ${prog} <br>`;
+            });
+
+            // Simpan ke localStorage
+            const pilihan = {
+                nama: "PERTANIAN MODEN (AGROTEKNOLOGI)",
+                am: syaratAm,
+                khas: syaratKhas,
+                universiti: uniData
+            };
+
+            localStorage.setItem("pilihanKerjaya", JSON.stringify(pilihan));
+
+            // Pergi ke halaman diari
+            window.location.href = "diari.html";
+        }
+    </script>
 </body>
 </html>
