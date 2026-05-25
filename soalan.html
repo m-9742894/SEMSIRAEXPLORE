@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujian RIASEK - SEMSIRA (60 Soalan)</title>
+    <title>Ujian RIASEK - SEMSIRA</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -126,103 +126,27 @@
     </div>
 
     <script>
-        // ===================================================
-        // 60 SOALAN RIASEK (10 soalan setiap kategori)
-        // Urutan: R, I, A, S, E, K (berulang 10 kali)
-        // ===================================================
+        // Data Soalan RIASEK
         const questions = [
-            // Kitaran 1
-            { q: "Saya suka membaiki peralatan elektrik yang rosak.", cat: "R" },
-            { q: "Saya berminat untuk menjalankan eksperimen sains di makmal.", cat: "I" },
-            { q: "Saya suka melukis atau mencipta karya seni visual.", cat: "A" },
-            { q: "Saya suka membantu rakan yang bermasalah dengan mendengar nasihat mereka.", cat: "S" },
-            { q: "Saya suka memimpin pasukan dalam sesuatu projek.", cat: "E" },
-            { q: "Saya suka menyusun fail dan dokumen dengan kemas.", cat: "K" },
-            
-            // Kitaran 2
-            { q: "Saya gemar membina atau memasang perabot kayu.", cat: "R" },
-            { q: "Saya suka membaca buku sains dan mencari jawapan secara logik.", cat: "I" },
-            { q: "Saya gemar menulis cerpen, puisi atau skrip drama.", cat: "A" },
-            { q: "Saya rela menjadi sukarelawan di rumah anak yatim.", cat: "S" },
-            { q: "Saya selesa menjadi ketua dalam mesyuarat kumpulan.", cat: "E" },
-            { q: "Saya gemar menyemak data atau nombor dengan teliti.", cat: "K" },
-            
-            // Kitaran 3
-            { q: "Saya suka mengendalikan mesin atau alatan berat.", cat: "R" },
-            { q: "Saya suka menganalisis data statistik untuk mencari corak.", cat: "I" },
-            { q: "Saya berminat untuk mereka bentuk grafik atau animasi digital.", cat: "A" },
-            { q: "Saya suka mengajar atau membimbing orang lain belajar sesuatu.", cat: "S" },
-            { q: "Saya gemar memberi idea dan mempengaruhi keputusan kumpulan.", cat: "E" },
-            { q: "Saya suka mengikut prosedur kerja yang sistematik.", cat: "K" },
-            
-            // Kitaran 4
-            { q: "Saya suka membaiki kereta atau motosikal.", cat: "R" },
-            { q: "Saya suka menyelesaikan teka-teki logik atau matematik.", cat: "I" },
-            { q: "Saya gemar bermain alat muzik (gitar, piano, dram dll).", cat: "A" },
-            { q: "Saya suka menjaga atau menguruskan aktiviti orang tua.", cat: "S" },
-            { q: "Saya berminat untuk memulakan perniagaan sendiri.", cat: "E" },
-            { q: "Saya suka membuat catatan kewangan atau belanjawan.", cat: "K" },
-            
-            // Kitaran 5
-            { q: "Saya suka bekerja di luar rumah (ladang, bengkel, tapak bina).", cat: "R" },
-            { q: "Saya gemar menggunakan mikroskop atau peralatan saintifik.", cat: "I" },
-            { q: "Saya suka mengambil gambar atau merakam video secara kreatif.", cat: "A" },
-            { q: "Saya suka menjadi fasilitator atau kaunselor rakan sebaya.", cat: "S" },
-            { q: "Saya suka mempromosikan produk atau perkhidmatan kepada orang ramai.", cat: "E" },
-            { q: "Saya suka menyimpan rekod inventori atau stok barang.", cat: "K" },
-            
-            // Kitaran 6
-            { q: "Saya suka menggunakan alat tangan (tukul, gerudi, sepana).", cat: "R" },
-            { q: "Saya suka menyiasat punca kerosakan sesuatu alat.", cat: "I" },
-            { q: "Saya gemar menari atau berlakon di atas pentas.", cat: "A" },
-            { q: "Saya suka mendengar masalah orang lain dengan penuh empati.", cat: "S" },
-            { q: "Saya suka merancang strategi untuk memenangi pertandingan.", cat: "E" },
-            { q: "Saya suka mengurus jadual mesyuarat atau perjalanan.", cat: "K" },
-            
-            // Kitaran 7
-            { q: "Saya suka menanam sayur atau menjaga ternakan.", cat: "R" },
-            { q: "Saya suka mempelajari bagaimana benda hidup berfungsi (biologi).", cat: "I" },
-            { q: "Saya suka menghias bilik atau membuat kraftangan.", cat: "A" },
-            { q: "Saya berminat menjadi guru, jururawat atau pekerja sosial.", cat: "S" },
-            { q: "Saya suka berdebat dan mempertahankan pendapat sendiri.", cat: "E" },
-            { q: "Saya suka mengisi borang dengan teliti tanpa kesilapan.", cat: "K" },
-            
-            // Kitaran 8
-            { q: "Saya suka memandu lori, traktor atau jentolak.", cat: "R" },
-            { q: "Saya suka belajar tentang astronomi, kimia atau fizik.", cat: "I" },
-            { q: "Saya gemar mencipta reka bentuk fesyen atau aksesori.", cat: "A" },
-            { q: "Saya suka menguruskan aktiviti kemasyarakatan.", cat: "S" },
-            { q: "Saya suka menjual produk secara langsung (door to door atau online).", cat: "E" },
-            { q: "Saya suka menguruskan surat-menyurat atau emel rasmi.", cat: "K" },
-            
-            // Kitaran 9
-            { q: "Saya suka membuat kerja paip atau pendawaian elektrik.", cat: "R" },
-            { q: "Saya suka menulis laporan teknikal atau kertas kajian.", cat: "I" },
-            { q: "Saya suka melukis poster atau membuat ilustrasi digital.", cat: "A" },
-            { q: "Saya suka bergaul dan bekerjasama dengan pelbagai jenis orang.", cat: "S" },
-            { q: "Saya mempunyai cita-cita tinggi untuk berjaya dalam kerjaya.", cat: "E" },
-            { q: "Saya suka mengikut arahan dan prosedur standard dengan ketat.", cat: "K" },
-            
-            // Kitaran 10
-            { q: "Saya suka bermain sukan lasak atau aktiviti fizikal berat.", cat: "R" },
-            { q: "Saya suka menyelesaikan masalah yang memerlukan pemikiran kritis.", cat: "I" },
-            { q: "Saya suka menghasilkan karya seni daripada bahan terbuang.", cat: "A" },
-            { q: "Saya suka memotivasikan orang lain untuk menjadi lebih baik.", cat: "S" },
-            { q: "Saya suka mengambil risiko demi mencapai keuntungan atau kejayaan.", cat: "E" },
-            { q: "Saya suka menyediakan laporan atau jadual secara teratur.", cat: "K" }
+            { q: "Saya suka membaiki barang elektrik atau mekanikal.", cat: "R" },
+            { q: "Saya gemar membuat kaji selidik atau eksperimen sains.", cat: "I" },
+            { q: "Saya suka melukis, menulis puisi atau bermain alat muzik.", cat: "A" },
+            { q: "Saya suka menolong orang lain menyelesaikan masalah mereka.", cat: "S" },
+            { q: "Saya suka memimpin kumpulan dan meyakinkan orang lain.", cat: "E" },
+            { q: "Saya suka menyusun fail, data dan bekerja dengan teratur.", cat: "K" }
         ];
 
         let currentQ = 0;
         let scores = { R: 0, I: 0, A: 0, S: 0, E: 0, K: 0 };
 
-        // Ambil nama dari localStorage (jika ada)
+        // Ambil nama dari fail sebelum ni
         const userName = localStorage.getItem("namaPelajar") || "Pelajar";
         document.getElementById("displayUser").innerText = "EKSPLORASI: " + userName;
 
         function loadQuestion() {
             if (currentQ < questions.length) {
                 document.getElementById("questionText").innerText = questions[currentQ].q;
-                let progress = (currentQ / questions.length) * 100;
+                let progress = ((currentQ) / questions.length) * 100;
                 document.getElementById("progressBar").style.width = progress + "%";
             } else {
                 finishQuiz();
@@ -237,7 +161,7 @@
             
             currentQ++;
             
-            // Efek transisi
+            // Efek transisi kad
             const box = document.getElementById("quizBox");
             box.style.opacity = "0";
             box.style.transform = "translateX(-20px)";
@@ -262,7 +186,7 @@
             `;
         }
 
-        // Mulakan ujian
+        // Mula soalan pertama
         loadQuestion();
     </script>
 
